@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Projekt_1dv406.Model
 {
+    // Klass för hantering av åtgärder på felanmälan
     public class Action
     {
         public int ÅtgID { get; set; }

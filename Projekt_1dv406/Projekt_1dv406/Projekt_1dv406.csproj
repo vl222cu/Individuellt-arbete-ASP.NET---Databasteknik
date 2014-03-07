@@ -71,6 +71,10 @@
   <ItemGroup>
     <Compile Include="Model\Action.cs" />
     <Compile Include="Model\Case.cs" />
+    <Compile Include="Model\DAL\ActionDAL.cs" />
+    <Compile Include="Model\DAL\CaseDAL.cs" />
+    <Compile Include="Model\DAL\DALBase.cs" />
+    <Compile Include="Model\DAL\DepartmentDAL.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
