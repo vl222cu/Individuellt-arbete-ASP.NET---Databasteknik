@@ -50,7 +50,7 @@ namespace Projekt_1dv406.Model.DAL
         }
 
         // Hämtar en avdelning i databasen från tabellen avdelning
-        public Department GetDepartment(Department department)
+        public Department GetDepartment(int depId)
         {
             using (var conn = CreateConnection())
             {
@@ -59,7 +59,7 @@ namespace Projekt_1dv406.Model.DAL
                     var cmd = new SqlCommand("appSchema.GetDepartment", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@AvdID", SqlDbType.Int, 4).Value = department.AvdID;
+                    cmd.Parameters.Add("@AvdID", SqlDbType.Int, 4).Value = depId.AvdID;
 
                     conn.Open();
 

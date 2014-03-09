@@ -56,7 +56,7 @@ namespace Projekt_1dv406.Model.DAL
         }
 
         // Hämtar en åtgärd i databasen
-        public Action GetAction(Action action)
+        public Action GetAction(int actionId)
         {
             using (var conn = CreateConnection())
             {

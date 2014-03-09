@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Projekt_1dv406.Pages.Shared.Site" ViewStateMode="Disabled" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+</head>
+<body>
+    <form id="myForm" runat="server">
+        <div id="maincontainer">
+            <header>
+                <h1>Felanmälan
+                </h1>
+            </header>
+            <div id="maincontent">
+                <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+            </div>
+        </div>
+        <footer>Projectowner Vivi Lam</footer>
+    </form>
+    <asp:ContentPlaceHolder ID="ScriptContentPlaceHolder" runat="server" />
+</body>
+</html>
