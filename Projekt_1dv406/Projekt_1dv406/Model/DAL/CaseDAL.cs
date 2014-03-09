@@ -17,12 +17,10 @@ namespace Projekt_1dv406.Model.DAL
             {
                 try
                 {
-                    var cmd = new SqlCommand("appSchema.NewCase", conn);
+                    var cmd = new SqlCommand("appSchema.InsertCase", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@Felanmälan", SqlDbType.VarChar, 500).Value = errorCase.Felanmälan;
-                    cmd.Parameters.Add("@KatID", SqlDbType.Int, 4).Value = errorCase.KatID;
-                    cmd.Parameters.Add("@PrioID", SqlDbType.Int, 4).Value = errorCase.PrioID;
                     cmd.Parameters.Add("@Datum", SqlDbType.DateTime, 8).Value = errorCase.Datum;
                     cmd.Parameters.Add("@FelanmID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
 
@@ -50,8 +48,6 @@ namespace Projekt_1dv406.Model.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@Felanmälan", SqlDbType.VarChar, 500).Value = errorCase.Felanmälan;
-                    cmd.Parameters.Add("@KatID", SqlDbType.Int, 4).Value = errorCase.KatID;
-                    cmd.Parameters.Add("@PrioID", SqlDbType.Int, 4).Value = errorCase.PrioID;
                     cmd.Parameters.Add("@Datum", SqlDbType.DateTime, 8).Value = errorCase.Datum;
                     cmd.Parameters.Add("@FelanmID", SqlDbType.Int, 4).Value = errorCase.FelanmID;
 

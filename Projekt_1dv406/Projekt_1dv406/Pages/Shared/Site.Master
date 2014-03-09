@@ -6,19 +6,22 @@
 <head runat="server">
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server" />
+    <link href="~/Content/style.css" rel="stylesheet" />
 </head>
 <body>
     <form id="myForm" runat="server">
         <div id="maincontainer">
             <header>
-                <h1>Felanmälan
+                <h1>
+                    Ärendehantering
                 </h1>
             </header>
             <div id="maincontent">
                 <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
             </div>
+            <div id="footer">Project Owner Vivi Lam</div>
         </div>
-        <footer>Projectowner Vivi Lam</footer>
+
     </form>
     <asp:ContentPlaceHolder ID="ScriptContentPlaceHolder" runat="server" />
 </body>

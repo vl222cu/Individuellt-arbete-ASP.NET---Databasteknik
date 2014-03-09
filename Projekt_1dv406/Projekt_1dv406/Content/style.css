@@ -1,2 +1,14 @@
-﻿body {
+﻿#maincontainer {
+    width: 1300px;
+    margin: auto;
 }
+
+#maincontent {
+    height: 600px;
+}
+
+#footer {
+    margin:auto;
+    text-align: center;
+}
+

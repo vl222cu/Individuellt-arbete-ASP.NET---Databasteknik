@@ -15,8 +15,6 @@ namespace Projekt_1dv406.Model
         [StringLength(500, ErrorMessage="Textfältet får bestå av max 500 tecken.")]
         public string Felanmälan { get; set; }
 
-        public int KatID { get; set; }
-        public int PrioID { get; set; }
         public DateTime Datum { get; set; }
     }
 }

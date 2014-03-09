@@ -10,6 +10,9 @@ namespace Projekt_1dv406.Model
     public class Department
     {
         public int AvdID { get; set; }
+
+        [Required(ErrorMessage = "En avdelning måste anges.")]
+        [StringLength(500, ErrorMessage = "Avdelningen får bestå av max 25 tecken.")]
         public string Avdelning { get; set; }
     }
 }

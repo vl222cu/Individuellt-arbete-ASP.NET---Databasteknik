@@ -59,7 +59,7 @@ namespace Projekt_1dv406.Model.DAL
                     var cmd = new SqlCommand("appSchema.GetDepartment", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@AvdID", SqlDbType.Int, 4).Value = depId.AvdID;
+                    cmd.Parameters.Add("@AvdID", SqlDbType.Int, 4).Value = depId;
 
                     conn.Open();
 

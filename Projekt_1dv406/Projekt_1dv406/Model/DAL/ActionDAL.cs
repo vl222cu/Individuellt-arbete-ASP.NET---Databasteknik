@@ -65,7 +65,7 @@ namespace Projekt_1dv406.Model.DAL
                     var cmd = new SqlCommand("appSchema.GetAction", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@ÅtgID", SqlDbType.Int, 4).Value = action.ÅtgID;
+                    cmd.Parameters.Add("@ÅtgID", SqlDbType.Int, 4).Value = actionId;
 
                     conn.Open();
 
