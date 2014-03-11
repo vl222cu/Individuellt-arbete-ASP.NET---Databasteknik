@@ -4,6 +4,7 @@
     <h1>
         Skapa felanmälan
     </h1>
+    <asp:HyperLink runat="server" Text="Felanmälningar" NavigateUrl='<%$ RouteUrl:routename=CaseListing %>'/>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
     <asp:FormView ID="ErrorCaseFormView" runat="server"
         ItemType="Projekt_1dv406.Model.Case"
@@ -17,7 +18,8 @@
             </div>
             <div>
                 <asp:TextBox ID="DateTextBox" runat="server"
-                    TextMode="DateTimeLocal"></asp:TextBox>
+                    TextMode="DateTimeLocal"
+                     Text='<%# BindItem.Datum %>'></asp:TextBox>
             </div>
             <div>
                 <asp:Label ID="ErrorCaseLabel" runat="server"

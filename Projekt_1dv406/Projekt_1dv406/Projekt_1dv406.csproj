@@ -67,10 +67,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\style.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Pages\CaseListing.aspx" />
     <Content Include="Pages\ErrorCase.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Model\Action.cs" />
     <Compile Include="Model\Case.cs" />
     <Compile Include="Model\DAL\ActionDAL.cs" />
@@ -79,6 +85,13 @@
     <Compile Include="Model\DAL\DepartmentDAL.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Pages\CaseListing.aspx.cs">
+      <DependentUpon>CaseListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CaseListing.aspx.designer.cs">
+      <DependentUpon>CaseListing.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ErrorCase.aspx.cs">
       <DependentUpon>ErrorCase.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -95,9 +108,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Start\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
