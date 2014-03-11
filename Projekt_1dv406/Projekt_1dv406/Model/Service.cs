@@ -68,6 +68,12 @@ namespace Projekt_1dv406.Model
             CaseDAL.DeleteCase(caseId);
         }
 
+        // Hämtar alla åtgärder som finns lagrade i databasen
+        public IEnumerable<Case> GetCases()
+        {
+            return CaseDAL.GetCases();
+        }
+
         // Lägger till ny felanmälan i databasen
         public void SaveCase(Case errorCase)
         {

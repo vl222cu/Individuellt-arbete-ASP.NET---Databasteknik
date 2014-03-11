@@ -4,7 +4,9 @@
     <h1>
         Skapa felanmälan
     </h1>
-    <asp:HyperLink runat="server" Text="Felanmälningar" NavigateUrl='<%$ RouteUrl:routename=CaseListing %>'/>
+    <div class="links">
+        <asp:HyperLink runat="server" Text="Felanmälningar" NavigateUrl='<%$ RouteUrl:routename=CaseListing %>' />
+    </div>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
     <asp:FormView ID="ErrorCaseFormView" runat="server"
         ItemType="Projekt_1dv406.Model.Case"

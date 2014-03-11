@@ -10,6 +10,47 @@ namespace Projekt_1dv406.Model.DAL
 {
     public class CaseDAL : DALBase
     {
+        // Hämtar alla åtgärder i databasen
+        public static IEnumerable<Case> GetCases()
+        {
+            using (var conn = CreateConnection())
+            {
+                try
+                {
+                    var actions = new List<Case>(20);
+
+                    var cmd = new SqlCommand("appSchema.GetCases", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    conn.Open();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        var errorCaseIdIndex = reader.GetOrdinal("FelanmID");
+                        var errorCaseIndex = reader.GetOrdinal("Felanmälan");
+                        var DateIndex = reader.GetOrdinal("Datum");
+
+                        while (reader.Read())
+                        {
+                            actions.Add(new Case
+                            {
+                                FelanmID = reader.GetInt32(errorCaseIdIndex),
+                                Felanmälan = reader.GetString(errorCaseIndex),
+                                Datum = reader.GetDateTime(DateIndex)
+                            });
+                        }
+                    }
+
+                    actions.TrimExcess();
+                    return actions;
+                }
+                catch (Exception)
+                {
+                    throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
+                }
+            }
+        }
+
         // Skapar ny felanmälan i databasen
         public void InsertCase(Case errorCase)
         {
