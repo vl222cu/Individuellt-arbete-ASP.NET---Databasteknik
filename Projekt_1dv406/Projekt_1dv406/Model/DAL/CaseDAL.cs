@@ -10,7 +10,7 @@ namespace Projekt_1dv406.Model.DAL
 {
     public class CaseDAL : DALBase
     {
-        // Hämtar alla åtgärder i databasen
+        // Hämtar alla felanmälningar i databasen
         public static IEnumerable<Case> GetCases()
         {
             using (var conn = CreateConnection())
@@ -27,7 +27,7 @@ namespace Projekt_1dv406.Model.DAL
                     using (var reader = cmd.ExecuteReader())
                     {
                         var errorCaseIdIndex = reader.GetOrdinal("FelanmID");
-                        var errorCaseIndex = reader.GetOrdinal("Felanmälan");
+                        var CaseTopicIndex = reader.GetOrdinal("Ämne");
                         var DateIndex = reader.GetOrdinal("Datum");
 
                         while (reader.Read())
@@ -35,7 +35,7 @@ namespace Projekt_1dv406.Model.DAL
                             actions.Add(new Case
                             {
                                 FelanmID = reader.GetInt32(errorCaseIdIndex),
-                                Felanmälan = reader.GetString(errorCaseIndex),
+                                Ämne = reader.GetString(CaseTopicIndex),
                                 Datum = reader.GetDateTime(DateIndex)
                             });
                         }
@@ -43,6 +43,48 @@ namespace Projekt_1dv406.Model.DAL
 
                     actions.TrimExcess();
                     return actions;
+                }
+                catch (Exception)
+                {
+                    throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
+                }
+            }
+        }
+
+        // Hämtar vald felanmälan i databasen
+        public Case GetCase(int errorCaseId)
+        {
+            using (var conn = CreateConnection())
+            {
+                try
+                {
+                    var cmd = new SqlCommand("appSchema.GetCase", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@FelanmID", SqlDbType.Int, 4).Value = errorCaseId;
+
+                    conn.Open();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            var errorCaseIdIndex = reader.GetOrdinal("FelanmID");
+                            var topicIndex = reader.GetOrdinal("Ämne");
+                            var caseIndex = reader.GetOrdinal("Felanmälan");
+                            var dateIndex = reader.GetOrdinal("Datum");
+
+                            return new Case
+                            {
+                                FelanmID = reader.GetInt32(errorCaseIdIndex),
+                                Ämne = reader.GetString(topicIndex),
+                                Felanmälan = reader.GetString(caseIndex),
+                                Datum = reader.GetDateTime(dateIndex)
+                            };
+                        }
+                    }
+
+                    return null;
                 }
                 catch (Exception)
                 {
@@ -61,6 +103,7 @@ namespace Projekt_1dv406.Model.DAL
                     var cmd = new SqlCommand("appSchema.InsertCase", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.Add("@Ämne", SqlDbType.VarChar, 50).Value = errorCase.Ämne;
                     cmd.Parameters.Add("@Felanmälan", SqlDbType.VarChar, 500).Value = errorCase.Felanmälan;
                     cmd.Parameters.Add("@Datum", SqlDbType.DateTime, 8).Value = errorCase.Datum;
                     cmd.Parameters.Add("@FelanmID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
@@ -88,6 +131,7 @@ namespace Projekt_1dv406.Model.DAL
                     var cmd = new SqlCommand("appSchema.UpdateCase", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.Add("@Ämne", SqlDbType.VarChar, 50).Value = errorCase.Ämne;
                     cmd.Parameters.Add("@Felanmälan", SqlDbType.VarChar, 500).Value = errorCase.Felanmälan;
                     cmd.Parameters.Add("@Datum", SqlDbType.DateTime, 8).Value = errorCase.Datum;
                     cmd.Parameters.Add("@FelanmID", SqlDbType.Int, 4).Value = errorCase.FelanmID;

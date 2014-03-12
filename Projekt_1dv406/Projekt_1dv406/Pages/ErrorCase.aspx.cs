@@ -10,30 +10,14 @@ namespace Projekt_1dv406.Pages
 {
     public partial class ErrorCase : System.Web.UI.Page
     {
-        // Fält
-        private Service _service;
-
-        // Egenskap
-        private Service Service
-        {
-            get
-            {
-                return _service ?? (_service = new Service());
-            }
-        }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public void ErrorCaseFormView_InsertItem(Case errorCase)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Service.SaveCase(errorCase);
+                    Service service = new Service();
+                    service.SaveCase(errorCase);
                 }
                 catch (Exception)
                 {

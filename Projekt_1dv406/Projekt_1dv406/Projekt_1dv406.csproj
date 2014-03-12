@@ -68,6 +68,9 @@
   <ItemGroup>
     <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\CaseDelete.aspx" />
+    <Content Include="Pages\CaseDetails.aspx" />
+    <Content Include="Pages\CaseEdit.aspx" />
     <Content Include="Pages\CaseListing.aspx" />
     <Content Include="Pages\ErrorCase.aspx" />
     <Content Include="Web.config" />
@@ -85,6 +88,27 @@
     <Compile Include="Model\DAL\DepartmentDAL.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Pages\CaseDelete.aspx.cs">
+      <DependentUpon>CaseDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CaseDelete.aspx.designer.cs">
+      <DependentUpon>CaseDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CaseDetails.aspx.cs">
+      <DependentUpon>CaseDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CaseDetails.aspx.designer.cs">
+      <DependentUpon>CaseDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CaseEdit.aspx.cs">
+      <DependentUpon>CaseEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CaseEdit.aspx.designer.cs">
+      <DependentUpon>CaseEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CaseListing.aspx.cs">
       <DependentUpon>CaseListing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,19 +1,20 @@
-﻿<%@ Page Title="Felanmälningsformulär" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="ErrorCase.aspx.cs" Inherits="Projekt_1dv406.Pages.ErrorCase" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="CaseEdit.aspx.cs" Inherits="Projekt_1dv406.Pages.CaseEdit" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <h1>
-        Skapa felanmälan
+        <h1>
+        Redigera felanmälan
     </h1>
     <div class="links">
-        <asp:HyperLink runat="server" Text="Felanmälningslista" NavigateUrl='<%$ RouteUrl:routename=CaseListing %>' />
+        <asp:HyperLink runat="server" Text="Felanmälningar" NavigateUrl='<%$ RouteUrl:routename=CaseListing %>' />
     </div>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
-    <asp:FormView ID="ErrorCaseFormView" runat="server"
+    <asp:FormView ID="EditErrorCaseFormView" runat="server"
         ItemType="Projekt_1dv406.Model.Case"
-        DefaultMode="Insert"
+        DataKeyNames="FelanmID"
+        DefaultMode="Edit"
         RenderOuterTable="false"
-        InsertMethod="ErrorCaseFormView_InsertItem">
-        <InsertItemTemplate>
+        SelectMethod="EditErrorCaseFormView_GetItem"
+        UpdateMethod="EditErrorCaseFormView_UpdateItem">
+        <EditItemTemplate>
             <div>
                 <asp:Label ID="DateLabel" runat="server"
                     Text="Mottaget"></asp:Label>
@@ -42,14 +43,12 @@
                     Text='<%# BindItem.Felanmälan %>'></asp:TextBox>
             </div>
             <div>
-                <asp:LinkButton ID="LinkSaveButton" runat="server"
-                    Text="Spara" CommandName="Insert"
+                <asp:LinkButton ID="LinkSaveEditButton" runat="server"
+                    Text="Spara" CommandName="Update"
                     CssClass="linkbutton" />
-                <asp:LinkButton ID="LinkCancelButton" runat="server"
-                    Text="Avbryt" CommandName="Cancel"
-                    CssClass="linkbutton" />
+                <asp:HyperLink ID="HyperLink1" runat="server" Text="Avbryt" NavigateUrl='<%# GetRouteUrl("CaseDetails", new { id = Item.FelanmID }) %>' />
             </div>
-        </InsertItemTemplate>
+        </EditItemTemplate>
     </asp:FormView>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContentPlaceHolder" runat="server">

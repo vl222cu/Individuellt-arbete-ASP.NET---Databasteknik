@@ -17,6 +17,18 @@ namespace Projekt_1dv406
             routes.MapPageRoute("CaseListing",
                 "felanmälan/lista",
                 "~/Pages/CaseListing.aspx");
+
+            routes.MapPageRoute("CaseDetails",
+                "felanmälan/{id}",
+                "~/Pages/CaseDetails.aspx");
+
+            routes.MapPageRoute("CaseEdit",
+                "felanmälan/{id}/redigera",
+                "~/Pages/CaseEdit.aspx");
+
+            routes.MapPageRoute("CaseDelete",
+                "felanmälan/{id}/radera",
+                "~/Pages/CaseDelete.aspx");
         }
     }
 }

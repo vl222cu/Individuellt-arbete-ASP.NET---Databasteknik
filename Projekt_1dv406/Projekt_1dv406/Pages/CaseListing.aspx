@@ -1,11 +1,10 @@
 ﻿<%@ Page Title="Felanmälningslista" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="CaseListing.aspx.cs" Inherits="Projekt_1dv406.Pages.CaseListing" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <h1>
-        Felanmälningar
+    <h1>Felanmälningslista
     </h1>
     <div class="links">
-        <asp:HyperLink runat="server" Text="Ny felanmälan" NavigateUrl='<%$ RouteUrl:routename=ErrorCase %>' />
+        <asp:HyperLink runat="server" Text="Startsida" NavigateUrl='<%$ RouteUrl:routename=ErrorCase %>' />
     </div>
     <div class="status">
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
@@ -17,8 +16,10 @@
         <LayoutTemplate>
             <table>
                 <tr>
-                    <th>Felanmälan</th>
-                    <th>Datum</th>
+                    <th>Ämne
+                    </th>
+                    <th>Datum
+                    </th>
                 </tr>
                 <asp:PlaceHolder ID="itemPlaceHolder" runat="server" />
             </table>
@@ -26,7 +27,7 @@
         <ItemTemplate>
             <tr>
                 <td>
-                    <%# Item.Felanmälan %>
+                <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("CaseDetails", new { id = Item.FelanmID })%>' Text='<%# Item.Ämne %>' />                                  
                 </td>
                 <td>
                     <%# Item.Datum %>
