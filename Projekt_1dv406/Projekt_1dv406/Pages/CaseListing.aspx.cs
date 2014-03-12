@@ -15,17 +15,11 @@ namespace Projekt_1dv406.Pages
 
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
+        // Hämtar alla felanmälningar från databasen
         public IEnumerable<Case> CaseListView_GetData()
         {
             try
             {
-
                 Service service = new Service();
                 return service.GetCases();
             }

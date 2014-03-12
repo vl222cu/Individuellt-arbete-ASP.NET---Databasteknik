@@ -7,7 +7,10 @@
     <div class="links">
         <asp:HyperLink runat="server" Text="Felanmälningslista" NavigateUrl='<%$ RouteUrl:routename=CaseListing %>' />
     </div>
+    <%-- Statusinformation --%>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+
+    <%-- Formulär för att skapa en felanmälan --%>
     <asp:FormView ID="ErrorCaseFormView" runat="server"
         ItemType="Projekt_1dv406.Model.Case"
         DefaultMode="Insert"

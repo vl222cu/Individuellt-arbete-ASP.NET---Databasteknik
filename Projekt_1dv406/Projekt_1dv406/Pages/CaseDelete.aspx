@@ -3,6 +3,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h1>Radera felanmälan
     </h1>
+
+    <%-- Statusinformation --%>
     <div class="status">
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
     </div>
@@ -13,6 +15,7 @@
         </p>
     </asp:PlaceHolder>
     <div>
+        <%-- Möjlighet att bekräfta radering eller avbryta radering --%>
         <asp:LinkButton ID="DeleteLinkButton" runat="server"
             Text="Bekräfta" OnCommand="DeleteLinkButton_Command"
             CommandArgument='<%$ RouteValue:id %>' />

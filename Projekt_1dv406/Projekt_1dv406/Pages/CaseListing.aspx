@@ -3,12 +3,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h1>Felanmälningslista
     </h1>
+    <%-- Möjlighet att återgå till felanmälningsformuläret --%>
     <div class="links">
         <asp:HyperLink runat="server" Text="Startsida" NavigateUrl='<%$ RouteUrl:routename=ErrorCase %>' />
     </div>
+
+    <%-- Statusinformation --%>
     <div class="status">
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
     </div>
+
+    <%-- Lista på alla felanmälningar som är registrerade --%>
     <asp:ListView ID="CaseListView" runat="server"
         ItemType="Projekt_1dv406.Model.Case"
         SelectMethod="CaseListView_GetData"
@@ -21,6 +26,7 @@
                     <th>Datum
                     </th>
                 </tr>
+                <%-- Platshållare för nya rader --%>
                 <asp:PlaceHolder ID="itemPlaceHolder" runat="server" />
             </table>
         </LayoutTemplate>
@@ -33,9 +39,9 @@
                     <%# Item.Datum %>
                 </td>
             </tr>
-            <%-- Platshållare för nya rader --%>
         </ItemTemplate>
         <EmptyDataTemplate>
+            <%-- Detta visas om felanmälningar saknas i databasen --%>
             <table>
                 <tr>
                     <td>Felanmälan saknas.

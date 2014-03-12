@@ -15,6 +15,7 @@ namespace Projekt_1dv406.Pages
 
         }
 
+        // Raderar felanmälan och återgår till startsidan
         protected void DeleteLinkButton_Command(object sender, CommandEventArgs e)
         {
             try

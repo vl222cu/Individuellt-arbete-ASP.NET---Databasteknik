@@ -43,7 +43,7 @@ namespace Projekt_1dv406.Pages
             }
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
+        // Uppdaterar ändringar gjorda på vald felanmälan
         public void EditErrorCaseFormView_UpdateItem(int felanmId)
         {
             try

@@ -10,6 +10,7 @@ namespace Projekt_1dv406.Pages
 {
     public partial class ErrorCase : System.Web.UI.Page
     {
+        // Sparar ny felanmälan i databasen
         public void ErrorCaseFormView_InsertItem(Case errorCase)
         {
             if (ModelState.IsValid)
