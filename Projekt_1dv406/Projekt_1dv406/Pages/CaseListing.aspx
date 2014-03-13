@@ -33,7 +33,7 @@
         <ItemTemplate>
             <tr>
                 <td>
-                <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("CaseDetails", new { id = Item.FelanmID })%>' Text='<%# Item.Ämne %>' />                                  
+                <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("CaseAssignments", new { id = Item.FelanmID })%>' Text='<%# Item.Ämne %>' />                                  
                 </td>
                 <td>
                     <%# Item.Datum %>

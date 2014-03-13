@@ -51,6 +51,12 @@ namespace Projekt_1dv406.Model
             return ActionDAL.GetAction(actionId);
         }
 
+        //// Hämtar vald åtgärd från databasen med FelanmID
+        //public List<Action> GetActionByCaseId(int caseId)
+        //{
+        //    return ActionDAL.GetActionByCaseId(caseId);
+        //}
+
         // Hämtar alla åtgärder som finns lagrade i databasen
         public IEnumerable<Action> GetActions()
         {
@@ -93,9 +99,17 @@ namespace Projekt_1dv406.Model
             }
         }
 
-        public Department GetDepartment(int depId)
+        // Hämtar lista med avdelningar och cachar alla 
+        // Departmentobjekt i 10 min
+        public IEnumerable<Department> GetDepartments()
         {
-            return DepartmentDAL.GetDepartment(depId);
+            var departments = HttpContext.Current.Cache["departments"] as IEnumerable<Department>;
+            if (departments == null)
+            {
+                departments = GetDepartments();
+                HttpContext.Current.Cache.Insert("departments", departments, null, DateTime.Now.AddMinutes(10), TimeSpan.Zero);
+            }
+            return departments;
         }
     }
 }

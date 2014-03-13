@@ -56,7 +56,7 @@
                 <asp:LinkButton ID="LinkSaveEditButton" runat="server"
                     Text="Spara" CommandName="Update"
                     CssClass="linkbutton" />
-                <asp:HyperLink ID="HyperLink1" runat="server" Text="Avbryt" NavigateUrl='<%# GetRouteUrl("CaseDetails", new { id = Item.FelanmID }) %>' />
+                <asp:HyperLink ID="HyperLink1" runat="server" Text="Avbryt" NavigateUrl='<%# GetRouteUrl("CaseAssignments", new { id = Item.FelanmID }) %>' />
             </div>
         </EditItemTemplate>
     </asp:FormView>
