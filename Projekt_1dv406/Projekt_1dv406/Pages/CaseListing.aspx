@@ -5,7 +5,7 @@
     </h1>
     <%-- Möjlighet att återgå till felanmälningsformuläret --%>
     <div class="links">
-        <asp:HyperLink runat="server" Text="Startsida" NavigateUrl='<%$ RouteUrl:routename=ErrorCase %>' />
+        <asp:HyperLink runat="server" Text="Startsida" NavigateUrl='<%$ RouteUrl:routename=CaseCreate %>' />
     </div>
 
     <%-- Statusinformation --%>

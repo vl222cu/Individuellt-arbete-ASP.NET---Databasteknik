@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Felanmälningsformulär" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="ErrorCase.aspx.cs" Inherits="Projekt_1dv406.Pages.ErrorCase" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="CaseCreate.aspx.cs" Inherits="Projekt_1dv406.Pages.CaseCreate" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h1>
@@ -11,11 +11,11 @@
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
 
     <%-- Formulär för att skapa en felanmälan --%>
-    <asp:FormView ID="ErrorCaseFormView" runat="server"
+    <asp:FormView ID="CaseCreateFormView" runat="server"
         ItemType="Projekt_1dv406.Model.Case"
         DefaultMode="Insert"
         RenderOuterTable="false"
-        InsertMethod="ErrorCaseFormView_InsertItem">
+        InsertMethod="CaseCreateFormView_InsertItem">
         <InsertItemTemplate>
             <div>
                 <asp:Label ID="DateLabel" runat="server"

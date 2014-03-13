@@ -10,7 +10,7 @@
 namespace Projekt_1dv406.Pages {
     
     
-    public partial class ErrorCase {
+    public partial class CaseCreate {
         
         /// <summary>
         /// ValidationSummary1 control.
@@ -22,12 +22,12 @@ namespace Projekt_1dv406.Pages {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// ErrorCaseFormView control.
+        /// CaseCreateFormView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView ErrorCaseFormView;
+        protected global::System.Web.UI.WebControls.FormView CaseCreateFormView;
     }
 }

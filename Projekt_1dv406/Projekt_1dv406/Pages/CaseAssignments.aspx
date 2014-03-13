@@ -44,7 +44,7 @@
                 <%-- Möjlighet att välja om felanmälan ska redigeras eller raderas samt tillbaka till startsidan --%>
                 <asp:HyperLink ID="HyperLink1" runat="server" Text="Redigera" NavigateUrl='<%# GetRouteUrl("CaseEdit", new { id = Item.FelanmID }) %>' />
                 <asp:HyperLink ID="HyperLink2" runat="server" Text="Radera" NavigateUrl='<%# GetRouteUrl("CaseDelete", new { id = Item.FelanmID }) %>' />
-                <asp:HyperLink ID="HyperLink3" runat="server" Text="Startsida" NavigateUrl='<%# GetRouteUrl("ErrorCase", null) %>' />
+                <asp:HyperLink ID="HyperLink3" runat="server" Text="Avbryt" NavigateUrl='<%# GetRouteUrl("CaseCreate", null) %>' />
             </div>
         </ItemTemplate>
     </asp:FormView>
