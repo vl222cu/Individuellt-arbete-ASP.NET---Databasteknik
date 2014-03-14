@@ -23,7 +23,7 @@ namespace Projekt_1dv406.Pages
                 Service service = new Service();
                 var id = int.Parse(e.CommandArgument.ToString());
                 service.DeleteCase(id);
-                Response.RedirectToRoute("ErrorCase", null);
+                Response.RedirectToRoute("CaseCreate", null);
                 Context.ApplicationInstance.CompleteRequest();
             }
             catch (Exception)

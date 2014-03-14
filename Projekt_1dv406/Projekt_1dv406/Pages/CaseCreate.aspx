@@ -8,7 +8,9 @@
         <asp:HyperLink runat="server" Text="Felanmälningslista" NavigateUrl='<%$ RouteUrl:routename=CaseListing %>' />
     </div>
     <%-- Statusinformation --%>
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server"
+        HeaderText="Fel inträffade! Åtgärda felen och försök igen."
+        CssClass="validate" />
 
     <%-- Formulär för att skapa en felanmälan --%>
     <asp:FormView ID="CaseCreateFormView" runat="server"
@@ -19,12 +21,12 @@
         <InsertItemTemplate>
             <div>
                 <asp:Label ID="DateLabel" runat="server"
-                    Text="Mottaget"></asp:Label>
+                    Text="Inkommet"></asp:Label>
             </div>
             <div>
                 <asp:TextBox ID="DateTextBox" runat="server"
                     TextMode="DateTimeLocal"
-                     Text='<%# BindItem.Datum %>'></asp:TextBox>
+                    Text='<%# BindItem.Datum %>'></asp:TextBox>
             </div>
             <div>
                 <asp:Label ID="TopicLabel" runat="server"
@@ -33,7 +35,11 @@
             <div>
                 <asp:TextBox ID="TopicTextBox" runat="server"
                     TextMode="SingleLine"
-                    Text='<%# BindItem.Ämne %>' Width="300"></asp:TextBox>
+                    Text='<%# BindItem.Ämne %>' Width="300" MaxLength="50"></asp:TextBox>
+                <%-- Validering --%>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                    ControlToValidate="TopicTextBox" ErrorMessage="Fältet Ämne får inte vara tomt."
+                    Display="None"></asp:RequiredFieldValidator>
             </div>
             <div>
                 <asp:Label ID="ErrorCaseLabel" runat="server"
@@ -41,8 +47,12 @@
             </div>
             <div>
                 <asp:TextBox ID="ErrorCaseTextBox" runat="server"
-                    TextMode="MultiLine" Columns="70" Rows="10"
+                    TextMode="MultiLine" Columns="70" Rows="10" MaxLength="500"
                     Text='<%# BindItem.Felanmälan %>'></asp:TextBox>
+                <%-- Validering --%>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                    ControlToValidate="ErrorCaseTextBox" ErrorMessage="Fältet Beskrivning får inte vara tomt."
+                    Display="None"></asp:RequiredFieldValidator>
             </div>
             <div>
                 <asp:LinkButton ID="LinkSaveButton" runat="server"
@@ -52,6 +62,7 @@
                     Text="Avbryt" CommandName="Cancel"
                     CssClass="linkbutton" />
             </div>
+
         </InsertItemTemplate>
     </asp:FormView>
 </asp:Content>

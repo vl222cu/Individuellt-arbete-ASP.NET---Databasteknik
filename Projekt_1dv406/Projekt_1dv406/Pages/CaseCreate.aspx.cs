@@ -10,6 +10,8 @@ namespace Projekt_1dv406.Pages
 {
     public partial class CaseCreate : System.Web.UI.Page
     {
+        public int FelanmID { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -32,7 +34,5 @@ namespace Projekt_1dv406.Pages
                 }
             }
         }
-
-
     }
 }

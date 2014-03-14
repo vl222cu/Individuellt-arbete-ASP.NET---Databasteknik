@@ -15,8 +15,8 @@ namespace Projekt_1dv406.Model.DAL
         {
             using (var conn = CreateConnection())
             {
-                try
-                {
+                //try
+                //{
                     var actions = new List<Action>(100);
 
                     var cmd = new SqlCommand("appSchema.GetActionList", conn);
@@ -47,11 +47,11 @@ namespace Projekt_1dv406.Model.DAL
 
                     actions.TrimExcess();
                     return actions;
-                }
-                catch (Exception)
-                {
-                    throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
-                }
+                //}
+                //catch (Exception)
+                //{
+                //    throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
+                //}
             }
         }
 
@@ -99,50 +99,52 @@ namespace Projekt_1dv406.Model.DAL
             }  
         }
 
-        //// Hämtar en åtgärd i databasen genom 
-        //public List<Action> GetActionByCaseId(int caseId)
-        //{
-        //    using (var conn = CreateConnection())
-        //    {
-        //        try
-        //        {
-        //            var cmd = new SqlCommand("appSchema.GetActionByCaseId", conn);
-        //            cmd.CommandType = CommandType.StoredProcedure;
+        // Hämtar en åtgärd i databasen genom 
+        public List<Action> GetActionByCaseId(int caseId)
+        {
+            using (var conn = CreateConnection())
+            {
+                //try
+                //{
+                    var cmd = new SqlCommand("appSchema.GetActionByCaseId", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-        //            cmd.Parameters.Add("@FelanmID", SqlDbType.Int, 4).Value = caseId;
+                    cmd.Parameters.Add("@ÅtgID", SqlDbType.Int, 4).Value = caseId;
 
-        //            List<Action> actions = new List<Action>(10);
+                    List<Action> actions = new List<Action>(10);
 
-        //            conn.Open();
+                    conn.Open();
 
-        //            using (var reader = cmd.ExecuteReader())
-        //            {
-        //               var errorCaseIndex = reader.GetOrdinal("FelanmID");
-        //               var depIndex = reader.GetOrdinal("AvdID");
-        //               var startDateIndex = reader.GetOrdinal("StartDatum");
-        //               var endDateIndex = reader.GetOrdinal("SlutDatum");
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        var actionIndex = reader.GetOrdinal("ÅtgID");
+                       var errorCaseIndex = reader.GetOrdinal("FelanmID");
+                       var depIndex = reader.GetOrdinal("AvdID");
+                       var startDateIndex = reader.GetOrdinal("StartDatum");
+                       var endDateIndex = reader.GetOrdinal("SlutDatum");
 
-        //               while (reader.Read())
-        //               {
-        //                    actions.Add(new Action
-        //                    {
-        //                        FelanmID = reader.GetInt32(errorCaseIndex),
-        //                        AvdID = reader.GetInt32(depIndex),
-        //                        StartDatum = reader.GetDateTime(startDateIndex),
-        //                        SlutDatum = reader.GetDateTime(endDateIndex)
-        //                    });
-        //                }
-        //            }
+                       while (reader.Read())
+                       {
+                            actions.Add(new Action
+                            {
+                                FelanmID = reader.GetInt32(errorCaseIndex),
+                                ÅtgID = reader.GetInt32(actionIndex),
+                                AvdID = reader.GetInt32(depIndex),
+                                StartDatum = reader.GetDateTime(startDateIndex),
+                                SlutDatum = reader.GetDateTime(endDateIndex)
+                            });
+                        }
+                    }
 
-        //            actions.TrimExcess();
-        //            return actions;
-        //        }
-        //        catch (Exception)
-        //        {
-        //            throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
-        //        }
-        //    }
-        //}
+                    actions.TrimExcess();
+                    return actions;
+                //}
+                //catch (Exception)
+                //{
+                //    throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
+                //}
+            }
+        }
 
         // Uppdaterar en åtgärd i databasen
         public static void UpdateAction(Action action)

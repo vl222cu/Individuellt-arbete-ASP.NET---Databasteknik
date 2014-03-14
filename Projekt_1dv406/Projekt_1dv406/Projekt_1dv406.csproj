@@ -69,13 +69,14 @@
     <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Pages\CaseAssignments.aspx" />
+    <Content Include="Pages\CaseCreate.aspx" />
     <Content Include="Pages\CaseDelete.aspx" />
     <Content Include="Pages\CaseEdit.aspx" />
     <Content Include="Pages\CaseListing.aspx" />
-    <Content Include="Pages\ErrorCase.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Infrastructure\MyValidationExtension.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="Pages\CaseAssignments.aspx.designer.cs">
       <DependentUpon>CaseAssignments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CaseCreate.aspx.cs">
+      <DependentUpon>CaseCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CaseCreate.aspx.designer.cs">
+      <DependentUpon>CaseCreate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\CaseDelete.aspx.cs">
       <DependentUpon>CaseDelete.aspx</DependentUpon>
@@ -115,13 +123,6 @@
     </Compile>
     <Compile Include="Pages\CaseListing.aspx.designer.cs">
       <DependentUpon>CaseListing.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ErrorCase.aspx.cs">
-      <DependentUpon>ErrorCase.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\ErrorCase.aspx.designer.cs">
-      <DependentUpon>ErrorCase.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Shared\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

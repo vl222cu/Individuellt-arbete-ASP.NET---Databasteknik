@@ -1,6 +1,7 @@
 ﻿#maincontainer {
     width: 1300px;
     margin: auto;
+    font-family: "Verdana", "Arial", sans-serif;
 }
 
 #maincontent {
@@ -25,3 +26,6 @@ td, th
     text-align: left;
 }
 
+.validate {
+    color: #ff0000;
+}

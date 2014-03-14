@@ -10,9 +10,9 @@ namespace Projekt_1dv406
     {
         public static void LinkRoutes(RouteCollection routes)
         {
-            routes.MapPageRoute("ErrorCase",
+            routes.MapPageRoute("CaseCreate",
                 "felanmälan/ny",
-                "~/Pages/ErrorCase.aspx");
+                "~/Pages/CaseCreate.aspx");
 
             routes.MapPageRoute("CaseListing",
                 "felanmälan/lista",

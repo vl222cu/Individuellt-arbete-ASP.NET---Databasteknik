@@ -12,7 +12,9 @@
 
     <%-- Statusinformation --%>
     <div>
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server"
+            HeaderText="Fel inträffade! Åtgärda felen och försök igen."
+            CssClass="validate" />
     </div>
 
     <%-- Formulär för att uppdatera en felanmälan --%>
@@ -41,6 +43,10 @@
                 <asp:TextBox ID="TopicTextBox" runat="server"
                     TextMode="SingleLine"
                     Text='<%# BindItem.Ämne %>' Width="300"></asp:TextBox>
+                <%-- Validering --%>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                    ControlToValidate="TopicTextBox" ErrorMessage="Fältet Ämne får inte vara tomt."
+                    Display="None"></asp:RequiredFieldValidator>
             </div>
             <div>
                 <asp:Label ID="ErrorCaseLabel" runat="server"
@@ -50,6 +56,10 @@
                 <asp:TextBox ID="ErrorCaseTextBox" runat="server"
                     TextMode="MultiLine" Columns="70" Rows="10"
                     Text='<%# BindItem.Felanmälan %>'></asp:TextBox>
+                <%-- Validering --%>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                    ControlToValidate="ErrorCaseTextBox" ErrorMessage="Fältet Beskrivning får inte vara tomt."
+                    Display="None"></asp:RequiredFieldValidator>
             </div>
             <div>
                 <%-- Möjlighet att spara ändringen eller avbryta ändringen --%>

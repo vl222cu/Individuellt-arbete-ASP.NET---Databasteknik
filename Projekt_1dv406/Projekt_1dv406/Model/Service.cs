@@ -66,6 +66,15 @@ namespace Projekt_1dv406.Model
         // Uppdaterar ändringar för vald åtgärd i databasen
         public void UpdateAction(Action action)
         {
+            // Validering
+            ICollection<ValidationResult> validationResults;
+            if (!action.Validate(out validationResults))
+            {
+                var ex = new ValidationException("Objektet klarade inte valideringen.");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
+            }
+
             ActionDAL.UpdateAction(action);
         }
 
@@ -89,6 +98,15 @@ namespace Projekt_1dv406.Model
         // Lägger till ny felanmälan i databasen
         public void SaveCase(Case errorCase)
         {
+            // Validering
+            ICollection<ValidationResult> validationResults;
+            if (!errorCase.Validate(out validationResults))
+            {
+                var ex = new ValidationException("Objektet klarade inte valideringen.");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
+            }
+
             if (errorCase.FelanmID == 0)
             {
                 CaseDAL.InsertCase(errorCase);
@@ -101,7 +119,7 @@ namespace Projekt_1dv406.Model
 
         // Hämtar lista med avdelningar och cachar alla 
         // Departmentobjekt i 10 min
-        public IEnumerable<Department> GetDepartments()
+        public static IEnumerable<Department> GetDepartments()
         {
             var departments = HttpContext.Current.Cache["departments"] as IEnumerable<Department>;
             if (departments == null)
