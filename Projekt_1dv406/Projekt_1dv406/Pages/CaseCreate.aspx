@@ -10,7 +10,7 @@
     <%-- Statusinformation --%>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server"
         HeaderText="Fel inträffade! Åtgärda felen och försök igen."
-        CssClass="validate" />
+        CssClass="validate" ShowModelStateErrors="false"/>
 
     <%-- Formulär för att skapa en felanmälan --%>
     <asp:FormView ID="CaseCreateFormView" runat="server"

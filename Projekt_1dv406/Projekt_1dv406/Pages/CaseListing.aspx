@@ -8,11 +8,6 @@
         <asp:HyperLink runat="server" Text="Startsida" NavigateUrl='<%$ RouteUrl:routename=CaseCreate %>' />
     </div>
 
-    <%-- Statusinformation --%>
-    <div class="status">
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
-    </div>
-
     <%-- Lista på alla felanmälningar som är registrerade --%>
     <asp:ListView ID="CaseListView" runat="server"
         ItemType="Projekt_1dv406.Model.Case"

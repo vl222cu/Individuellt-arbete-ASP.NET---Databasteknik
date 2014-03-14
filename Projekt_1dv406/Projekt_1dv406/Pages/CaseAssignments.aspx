@@ -10,12 +10,15 @@
 
     <%-- Statusinformation --%>
     <div class="status">
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server"
+            HeaderText="Fel inträffade! Åtgärda felen och försök igen."
+            CssClass="validate" ShowModelStateErrors="false" />
     </div>
 
     <%-- Visar den valda felanmälans uppgifter --%>
     <asp:FormView ID="DetailsFormView" runat="server"
         ItemType="Projekt_1dv406.Model.Case"
+        DataKeyNames="FelanmID"
         SelectMethod="DetailsFormView_GetItem"
         RenderOuterTable="false">
         <ItemTemplate>
@@ -40,6 +43,30 @@
             <div>
                 <%#: Item.Felanmälan %>
             </div>
+            <%-- Listview som presenterar felanmälans åtgärd --%>
+            <asp:ListView ID="ActionListView" runat="server"
+                ItemType="Projekt_1dv406.Model.Action"
+                DataKeyNames="FelanmID, ÅtgID, AvdID"
+                SelectMethod="ActionListView_GetData"
+                OnItemDataBound="ActionListView_ItemDataBound">
+                <LayoutTemplate>
+                    <h3>Åtgärdinformation</h3>
+                    <ul>
+                        <asp:PlaceHolder ID="itemPlaceHolder" runat="server"></asp:PlaceHolder>
+                    </ul>
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <li>
+                        <asp:Literal ID="DepartmentLiteral" runat="server"></asp:Literal>
+                        <span><%#: Item.StartDatum %></span><span><%#: Item.SlutDatum %></span>
+                    </li>
+                </ItemTemplate>
+                <EmptyItemTemplate>
+                    <p>
+                        Åtgärdinformation saknas.
+                    </p>
+                </EmptyItemTemplate>
+            </asp:ListView>
             <div>
                 <%-- Möjlighet att välja om felanmälan ska redigeras eller raderas samt tillbaka till startsidan --%>
                 <asp:HyperLink ID="HyperLink1" runat="server" Text="Redigera" NavigateUrl='<%# GetRouteUrl("CaseEdit", new { id = Item.FelanmID }) %>' />

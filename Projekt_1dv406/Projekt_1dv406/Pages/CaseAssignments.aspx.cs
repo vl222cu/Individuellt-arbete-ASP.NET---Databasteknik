@@ -31,7 +31,7 @@ namespace Projekt_1dv406.Pages
         public int caseId { get; set; }
 
         // Hämtar vald felanmälan från databasen
-        public Projekt_1dv406.Model.Case DetailsFormView_GetItem([RouteData] int id)
+        public Case DetailsFormView_GetItem([RouteData] int id)
         {
             try
             {
@@ -42,6 +42,31 @@ namespace Projekt_1dv406.Pages
                 ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då felanmälningar skulle hämtas.");
                 return null;
             }
+        }
+
+        // The return type can be changed to IEnumerable, however to support
+        // paging and sorting, the following parameters must be added:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public IEnumerable<Projekt_1dv406.Model.Action> ActionListView_GetData()
+        {
+            var actionId = ((Case)(DetailsFormView.DataItem)).FelanmID;
+            return Service.GetActionByCaseId(actionId);
+        }
+
+        protected void ActionListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            var action = (Projekt_1dv406.Model.Action)e.Item.DataItem;
+            if (action != null)
+            {
+                var department = Service.GetDepartments()
+                    .Single(dp => dp.AvdID == action.AvdID);
+                var literal = e.Item.FindControl("DepartmentLiteral") as Literal;
+                literal.Text = String.Format(literal.Text, department.Avdelning);
+            }
+
         }
     }
 }

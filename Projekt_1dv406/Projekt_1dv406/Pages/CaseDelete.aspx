@@ -6,7 +6,9 @@
 
     <%-- Statusinformation --%>
     <div class="status">
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server"
+            HeaderText="Fel inträffade! Åtgärda felen och försök igen."
+            CssClass="validate" ShowModelStateErrors="false" />
     </div>
     <asp:PlaceHolder ID="PlaceHolderConfirm" runat="server">
         <p>
