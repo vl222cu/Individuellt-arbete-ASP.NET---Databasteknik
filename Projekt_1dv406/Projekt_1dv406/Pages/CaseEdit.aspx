@@ -67,6 +67,7 @@
                     ItemType="Projekt_1dv406.Model.Action"
                     DataKeyNames="FelanmID, ÅtgID, AvdID"
                     SelectMethod="ActionListView_GetData"
+                    InsertMethod="ActionListView_InsertItem"
                     UpdateMethod="ActionListView_UpdateItem">
                     <LayoutTemplate>
                         <h3>Åtgärdinformation</h3>
@@ -128,10 +129,10 @@
                             </td>
                             <td>
                                 <asp:LinkButton ID="LinkButton1" runat="server"
-                                    CommandName="Update" Text="Spara" CssClass="linkbutton">Redigera</asp:LinkButton>
+                                    CommandName="Update" Text="Spara" CssClass="linkbutton"></asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton2" runat="server"
                                     CommandName="Cancel" Text="Avbryt"
-                                    CausesValidation="false" CssClass="linkbutton">Avbryt</asp:LinkButton>
+                                    CausesValidation="false" CssClass="linkbutton"></asp:LinkButton>
                             </td>
                         </tr>
                     </EditItemTemplate>

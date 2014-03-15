@@ -64,7 +64,6 @@
                     Text="Avbryt" CommandName="Cancel"
                     CssClass="linkbutton" />
             </div>
-
         </InsertItemTemplate>
     </asp:FormView>
 </asp:Content>

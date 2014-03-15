@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\ActionCreate.aspx" />
     <Content Include="Pages\CaseAssignments.aspx" />
     <Content Include="Pages\CaseCreate.aspx" />
     <Content Include="Pages\CaseDelete.aspx" />
@@ -89,6 +90,13 @@
     <Compile Include="Model\DAL\DepartmentDAL.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Pages\ActionCreate.aspx.cs">
+      <DependentUpon>ActionCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ActionCreate.aspx.designer.cs">
+      <DependentUpon>ActionCreate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CaseAssignments.aspx.cs">
       <DependentUpon>CaseAssignments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

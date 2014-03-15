@@ -15,8 +15,8 @@ namespace Projekt_1dv406.Model.DAL
         {
             using (var conn = CreateConnection())
             {
-                //try
-                //{
+                try
+                {
                     var actions = new List<Action>(100);
 
                     var cmd = new SqlCommand("appSchema.GetActionList", conn);
@@ -47,11 +47,11 @@ namespace Projekt_1dv406.Model.DAL
 
                     actions.TrimExcess();
                     return actions;
-                //}
-                //catch (Exception)
-                //{
-                //    throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
-                //}
+                }
+                catch (Exception)
+                {
+                    throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
+                }
             }
         }
 
@@ -104,8 +104,8 @@ namespace Projekt_1dv406.Model.DAL
         {
             using (var conn = CreateConnection())
             {
-                //try
-                //{
+                try
+                {
                     var cmd = new SqlCommand("appSchema.GetActionByCaseId", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -138,13 +138,39 @@ namespace Projekt_1dv406.Model.DAL
 
                     actions.TrimExcess();
                     return actions;
-                //}
-                //catch (Exception)
-                //{
-                //    throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
-                //}
+                }
+                catch (Exception)
+                {
+                    throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
+                }
             }
         }
+
+        // Skapar en åtgärd i databasen
+        public static void InsertAction(Action actionCase)
+        {
+            using (var conn = CreateConnection())
+            {
+                try
+                {
+                    var cmd = new SqlCommand("appSchema.InsertAction", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@AvdID", SqlDbType.Int, 4).Value = actionCase.AvdID;
+                    cmd.Parameters.Add("@StartDatum", SqlDbType.DateTime, 8).Value = actionCase.StartDatum;
+                    cmd.Parameters.Add("@SlutDatum", SqlDbType.DateTime, 8).Value = actionCase.SlutDatum;
+
+                    conn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw new ApplicationException("Ett fel uppstod vid uppdateringen.");
+                }
+            }
+        }
+
 
         // Uppdaterar en åtgärd i databasen
         public static void UpdateAction(Action action)
