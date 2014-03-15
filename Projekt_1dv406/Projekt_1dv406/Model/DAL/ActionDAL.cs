@@ -109,7 +109,7 @@ namespace Projekt_1dv406.Model.DAL
                     var cmd = new SqlCommand("appSchema.GetActionByCaseId", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@ÅtgID", SqlDbType.Int, 4).Value = caseId;
+                    cmd.Parameters.Add("@FelanmID", SqlDbType.Int, 4).Value = caseId;
 
                     List<Action> actions = new List<Action>(10);
 
@@ -117,8 +117,8 @@ namespace Projekt_1dv406.Model.DAL
 
                     using (var reader = cmd.ExecuteReader())
                     {
-                        var actionIndex = reader.GetOrdinal("ÅtgID");
                        var errorCaseIndex = reader.GetOrdinal("FelanmID");
+                       var actionIndex = reader.GetOrdinal("ÅtgID");
                        var depIndex = reader.GetOrdinal("AvdID");
                        var startDateIndex = reader.GetOrdinal("StartDatum");
                        var endDateIndex = reader.GetOrdinal("SlutDatum");
@@ -156,8 +156,8 @@ namespace Projekt_1dv406.Model.DAL
                     var cmd = new SqlCommand("appSchema.UpdateAction", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@ÅtgID", SqlDbType.Int, 4).Value = action.ÅtgID;
                     cmd.Parameters.Add("@FelanmID", SqlDbType.Int, 4).Value = action.FelanmID;
+                    cmd.Parameters.Add("@ÅtgID", SqlDbType.Int, 4).Value = action.ÅtgID;
                     cmd.Parameters.Add("@AvdID", SqlDbType.Int, 4).Value = action.AvdID;
                     cmd.Parameters.Add("@StartDatum", SqlDbType.DateTime, 8).Value = action.StartDatum;
                     cmd.Parameters.Add("@SlutDatum", SqlDbType.DateTime, 8).Value = action.SlutDatum;

@@ -43,30 +43,42 @@
             <div>
                 <%#: Item.Felanmälan %>
             </div>
-            <%-- Listview som presenterar felanmälans åtgärd --%>
-            <asp:ListView ID="ActionListView" runat="server"
-                ItemType="Projekt_1dv406.Model.Action"
-                DataKeyNames="FelanmID, ÅtgID, AvdID"
-                SelectMethod="ActionListView_GetData"
-                OnItemDataBound="ActionListView_ItemDataBound">
-                <LayoutTemplate>
-                    <h3>Åtgärdinformation</h3>
-                    <ul>
-                        <asp:PlaceHolder ID="itemPlaceHolder" runat="server"></asp:PlaceHolder>
-                    </ul>
-                </LayoutTemplate>
-                <ItemTemplate>
-                    <li>
-                        <asp:Literal ID="DepartmentLiteral" runat="server"></asp:Literal>
-                        <span><%#: Item.StartDatum %></span><span><%#: Item.SlutDatum %></span>
-                    </li>
-                </ItemTemplate>
-                <EmptyItemTemplate>
-                    <p>
-                        Åtgärdinformation saknas.
-                    </p>
-                </EmptyItemTemplate>
-            </asp:ListView>
+            <div class="actionwrapper">
+                <%-- Listview som presenterar felanmälans åtgärd --%>
+                <asp:ListView ID="ActionListView" runat="server"
+                    ItemType="Projekt_1dv406.Model.Action"
+                    DataKeyNames="FelanmID, ÅtgID, AvdID"
+                    SelectMethod="ActionListView_GetData"
+                    OnItemDataBound="ActionListView_ItemDataBound">
+                    <LayoutTemplate>
+                        <h3>Åtgärdinformation</h3>
+                        <table>
+                            <th>Avdelning</th>
+                            <th>Beräknad startdatum</th>
+                            <th>Beräknad slutdatum</th>
+                            <asp:PlaceHolder ID="itemPlaceHolder" runat="server"></asp:PlaceHolder>
+                        </table>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:Literal ID="DepartmentLiteral" runat="server"></asp:Literal>
+                            </td>
+                            <td>
+                                <asp:Label ID="Label1" runat="server" Text='<%#: Item.StartDatum %>'></asp:Label>
+                            </td>
+                            <td>
+                                <asp:Label ID="Label2" runat="server" Text='<%#: Item.SlutDatum %>'></asp:Label>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                    <EmptyItemTemplate>
+                        <p>
+                            Åtgärdinformation saknas.
+                        </p>
+                    </EmptyItemTemplate>
+                </asp:ListView>
+            </div>
             <div>
                 <%-- Möjlighet att välja om felanmälan ska redigeras eller raderas samt tillbaka till startsidan --%>
                 <asp:HyperLink ID="HyperLink1" runat="server" Text="Redigera" NavigateUrl='<%# GetRouteUrl("CaseEdit", new { id = Item.FelanmID }) %>' />

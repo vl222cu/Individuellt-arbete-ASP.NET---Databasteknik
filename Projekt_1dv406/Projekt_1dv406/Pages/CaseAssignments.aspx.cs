@@ -64,7 +64,7 @@ namespace Projekt_1dv406.Pages
                 var department = Service.GetDepartments()
                     .Single(dp => dp.AvdID == action.AvdID);
                 var literal = e.Item.FindControl("DepartmentLiteral") as Literal;
-                literal.Text = String.Format(literal.Text, department.Avdelning);
+                literal.Text = String.Format(department.Avdelning);
             }
 
         }

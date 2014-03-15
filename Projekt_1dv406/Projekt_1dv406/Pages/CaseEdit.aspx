@@ -61,6 +61,87 @@
                     ControlToValidate="ErrorCaseTextBox" ErrorMessage="Fältet Beskrivning får inte vara tomt."
                     Display="None"></asp:RequiredFieldValidator>
             </div>
+            <div class="actionwrapper">
+                <%-- Listview som presenterar felanmälans åtgärd --%>
+                <asp:ListView ID="ActionListView" runat="server"
+                    ItemType="Projekt_1dv406.Model.Action"
+                    DataKeyNames="FelanmID, ÅtgID, AvdID"
+                    SelectMethod="ActionListView_GetData"
+                    UpdateMethod="ActionListView_UpdateItem">
+                    <LayoutTemplate>
+                        <h3>Åtgärdinformation</h3>
+                        <table>
+                            <th>Avdelning</th>
+                            <th>Beräknad startdatum</th>
+                            <th>Beräknad slutdatum</th>
+                            <th></th>
+                            <asp:PlaceHolder ID="itemPlaceHolder" runat="server"></asp:PlaceHolder>
+                        </table>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:DropDownList ID="DepartmentDropDownListing" runat="server"
+                                    ItemType="Projekt_1dv406.Model.Department"
+                                    SelectMethod="DepartmentDropDownList_GetData"
+                                    DataTextField="Avdelning"
+                                    DataValueField="AvdID"
+                                    SelectedValue='<%# Item.AvdID %>' 
+                                    Enabled="False">
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="StartDateTextBox" runat="server"
+                                    Text='<%# Item.StartDatum %>' Enabled="False"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox1" runat="server"
+                                    Text='<%# Item.SlutDatum %>' Enabled="False"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:LinkButton ID="LinkButton1" runat="server"
+                                    CommandName="Edit" Text="Redigera" CssClass="linkbutton"></asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton2" runat="server"
+                                    CommandName="Cancel" Text="Avbryt"
+                                    CausesValidation="false" CssClass="linkbutton"></asp:LinkButton>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:DropDownList ID="DepartmentDropDownListing" runat="server"
+                                    ItemType="Projekt_1dv406.Model.Department"
+                                    SelectMethod="DepartmentDropDownList_GetData"
+                                    DataTextField="Avdelning"
+                                    DataValueField="AvdID"
+                                    SelectedValue='<%# BindItem.AvdID %>'>
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="StartDateTextBox" runat="server"
+                                    TextMode="DateTimeLocal" Text='<%# BindItem.StartDatum %>'></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox1" runat="server"
+                                    TextMode="DateTimeLocal" Text='<%# BindItem.SlutDatum %>'></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:LinkButton ID="LinkButton1" runat="server"
+                                    CommandName="Update" Text="Spara" CssClass="linkbutton">Redigera</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton2" runat="server"
+                                    CommandName="Cancel" Text="Avbryt"
+                                    CausesValidation="false" CssClass="linkbutton">Avbryt</asp:LinkButton>
+                            </td>
+                        </tr>
+                    </EditItemTemplate>
+                    <EmptyItemTemplate>
+                        <p>
+                            Åtgärdinformation saknas.
+                        </p>
+                    </EmptyItemTemplate>
+                </asp:ListView>
+            </div>
             <div>
                 <%-- Möjlighet att spara ändringen eller avbryta ändringen --%>
                 <asp:LinkButton ID="LinkSaveEditButton" runat="server"

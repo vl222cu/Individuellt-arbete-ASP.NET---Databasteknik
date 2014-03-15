@@ -1,16 +1,73 @@
-﻿#maincontainer {
-    width: 1300px;
+﻿/*
+#maincontainer {
+    width: 1020px;
+    height: auto;
     margin: auto;
+	padding: 20px;
+	font-family: "Verdana", "Arial", sans-serif;
+    -moz-box-shadow: 0 0 5px 10px rgba(25,25,25,0.1);
+    -webkit-box-shadow: 0 0 5px 10px rgba(25,25,25,0.1);
+    box-shadow: 0 0 5px 10px rgba(25,25,25,0.1);
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #1F1D1D), color-stop(1, #FFF));
+    background: -webkit-linear-gradient(top, #1F1D1D 5%, #FFF 100%);
+    background: -moz-linear-gradient( top, #1F1D1D 5%, #FFF 100% );
+    background: -o-linear-gradient(top, #1F1D1D 5%, #FFF 100%);
+    background: linear-gradient(top, #1F1D1D 5%, #FFF 100%);
+}
+
+.linkbutton {
+	margin: 5px;
+    padding: 5px;
     font-family: "Verdana", "Arial", sans-serif;
+    font-size: 11px;
+    color: #FFF;
+	-moz-box-shadow: 0 0 4px 0 #777;
+	-webkit-box-shadow: 0 0 4px 0 #777;
+	box-shadow: 0 0 4px 0 #777;
+    -webkit-border-radius: 5px;  
+    -moz-border-radius: 5px;  
+    border-radius: 5px;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #263966), color-stop(1, #79bbff) );
+	background: -webkit-linear-gradient(top, #263966 5%, #79bbff 100%);
+	background:-moz-linear-gradient( center top, #263966 5%, #79bbff 100% );
+	background: -o-linear-gradient(top, #263966 5%, #79bbff 100%);
+	background: linear-gradient(#263966 5%, #79bbff 100%);
 }
 
 #maincontent {
+    width: 600px;
     height: 600px;
+    margin-left: 30px;
+    font-size: 12px;
+    color: #FFF;
 }
 
-#footer {
-    margin:auto;
-    text-align: center;
+.textbox {
+    margin-bottom: 12px;
+    padding: 5px;  
+    border: solid 1px #EEE;  
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.03, #DDD), color-stop(1, #FFF)); 
+    background: -webkit-linear-gradient(top, #DDD 30%, #FFF 100%);
+    background: -moz-linear-gradient(top, #DDD 30%, #FFF 100%);
+    background: -o-linear-gradient(top, #DDD 30%, #FFF 100%);
+	background: linear-gradient(top, #DDD 30%, #FFF 100%);
+	-moz-box-shadow: rgba(0,0,0, 0.3) 0 0 8px;  
+    -webkit-box-shadow: rgba(0,0,0, 0.3) 0 0 8px;
+    box-shadow: rgba(0,0,0, 0.3) 0 0 8px; 
+	-webkit-border-radius: 5px;  
+    -moz-border-radius: 5px;  
+    border-radius: 5px;
+}
+ #btnwrapper {
+     margin-top: 10px;
+ }
+
+ .links {
+     margin: 10px;
+ }
+
+a:link {
+    color:#FFF;
 }
 
 table
@@ -29,3 +86,4 @@ td, th
 .validate {
     color: #ff0000;
 }
+*/

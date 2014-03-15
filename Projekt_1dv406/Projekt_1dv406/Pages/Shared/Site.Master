@@ -19,7 +19,7 @@
             <div id="maincontent">
                 <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
             </div>
-            <div id="footer">Project Owner Vivi Lam</div>
+            <div class="footer">Project Owner Vivi Lam</div>
         </div>
 
     </form>

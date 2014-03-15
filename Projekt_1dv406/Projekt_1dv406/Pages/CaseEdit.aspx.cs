@@ -69,5 +69,47 @@ namespace Projekt_1dv406.Pages
                 ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då felanmälan skulle uppdateras.");
             }
         }
+
+        // The return type can be changed to IEnumerable, however to support
+        // paging and sorting, the following parameters must be added:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public IEnumerable<Projekt_1dv406.Model.Action> ActionListView_GetData()
+        {
+            var actionId = ((Case)(EditErrorCaseFormView.DataItem)).FelanmID;
+            return Service.GetActionByCaseId(actionId);
+        }
+
+        public IEnumerable<Department> DepartmentDropDownList_GetData()
+        {
+            return Service.GetDepartments();
+        }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void ActionListView_UpdateItem(int ÅtgID)
+        {
+            try
+            {
+                var action = Service.GetAction(ÅtgID);
+
+                if (action == null)
+                {
+                    ModelState.AddModelError(String.Empty,
+                        String.Format("Felanmälan med åtgärd {0} hittades inte", ÅtgID));
+                    return;
+                }
+
+                if (TryUpdateModel(action))
+                {
+                    Service.UpdateAction(action);
+                }
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då åtgärdinformationen skulle uppdateras.");
+            }
+        }
     }
 }
