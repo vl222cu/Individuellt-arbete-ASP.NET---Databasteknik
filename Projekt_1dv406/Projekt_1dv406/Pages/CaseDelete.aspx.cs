@@ -23,7 +23,8 @@ namespace Projekt_1dv406.Pages
                 Service service = new Service();
                 var id = int.Parse(e.CommandArgument.ToString());
                 service.DeleteCase(id);
-                Response.RedirectToRoute("CaseCreate", null);
+                Page.SetTempData("Success", String.Format("Felanmälan med ärendenummer {0} är borttagen.", id));
+                Response.RedirectToRoute("CaseListing", null);
                 Context.ApplicationInstance.CompleteRequest();
             }
             catch (Exception)

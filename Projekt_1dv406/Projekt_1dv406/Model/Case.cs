@@ -19,6 +19,7 @@ namespace Projekt_1dv406.Model
         [StringLength(500, ErrorMessage="Textfältet får bestå av max 500 tecken.")]
         public string Felanmälan { get; set; }
 
+        [DataType(DataType.DateTime, ErrorMessage = "Datumet har ogiltigt format.")]
         public DateTime Datum { get; set; }
     }
 }

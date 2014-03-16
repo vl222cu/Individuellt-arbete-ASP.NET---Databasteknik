@@ -14,7 +14,7 @@ namespace Projekt_1dv406.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+          
         }
 
         public void CaseCreateFormView_InsertItem(Case errorCase)
@@ -25,6 +25,7 @@ namespace Projekt_1dv406.Pages
                 {
                     Service service = new Service();
                     service.SaveCase(errorCase);
+                    Page.SetTempData("Success", String.Format("Felanmälan är registrerad med ärendenummer {0}.", errorCase.FelanmID));
                     Response.RedirectToRoute("CaseAssignments", new { id = errorCase.FelanmID });
                     Context.ApplicationInstance.CompleteRequest();
                 }

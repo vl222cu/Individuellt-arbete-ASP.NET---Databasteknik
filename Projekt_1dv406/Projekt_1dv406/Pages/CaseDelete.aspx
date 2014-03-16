@@ -16,12 +16,14 @@
             att kunna återskapas efter radering.
         </p>
     </asp:PlaceHolder>
-    <div>
+    <div class="linkwrapper">
         <%-- Möjlighet att bekräfta radering eller avbryta radering --%>
         <asp:LinkButton ID="DeleteLinkButton" runat="server"
             Text="Bekräfta" OnCommand="DeleteLinkButton_Command"
-            CommandArgument='<%$ RouteValue:id %>' />
-        <asp:HyperLink ID="CancelHyperLink" runat="server" Text="Avbryt" NavigateUrl='<%$ RouteUrl:routename=CaseListing %>' />
+            CommandArgument='<%$ RouteValue:id %>' CssClass="linkbutton"/>
+        <asp:HyperLink ID="CancelHyperLink" runat="server" Text="Avbryt" 
+            NavigateUrl='<%$ RouteUrl:routename=CaseListing %>' 
+            CssClass="linkbutton" />
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContentPlaceHolder" runat="server">

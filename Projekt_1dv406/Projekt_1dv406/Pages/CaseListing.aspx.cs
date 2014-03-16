@@ -12,6 +12,8 @@ namespace Projekt_1dv406.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            StatusLabel.Text = Page.GetTempData("Success") as String;
+            StatusLabel.Visible = !String.IsNullOrWhiteSpace(StatusLabel.Text);
 
         }
 

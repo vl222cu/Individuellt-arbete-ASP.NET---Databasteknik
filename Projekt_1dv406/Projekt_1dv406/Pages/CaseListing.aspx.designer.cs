@@ -13,6 +13,15 @@ namespace Projekt_1dv406.Pages {
     public partial class CaseListing {
         
         /// <summary>
+        /// StatusLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StatusLabel;
+        
+        /// <summary>
         /// CaseListView control.
         /// </summary>
         /// <remarks>

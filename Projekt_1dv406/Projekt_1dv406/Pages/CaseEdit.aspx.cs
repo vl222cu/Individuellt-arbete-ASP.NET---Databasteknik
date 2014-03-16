@@ -25,7 +25,8 @@ namespace Projekt_1dv406.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            StatusLabel.Text = Page.GetTempData("Success") as String;
+            StatusLabel.Visible = !String.IsNullOrWhiteSpace(StatusLabel.Text);
         }
 
         // Hämtar vald felanmälan som finns lagrad i databasen
@@ -59,6 +60,7 @@ namespace Projekt_1dv406.Pages
                 if (TryUpdateModel(errorCase))
                 {
                     Service.SaveCase(errorCase);
+                    Page.SetTempData("Success", String.Format("Felanmälan med ärendenummer {0} är uppdaterad.", errorCase.FelanmID));
                     Response.RedirectToRoute("CaseListing", new { id = errorCase.FelanmID });
                     Context.ApplicationInstance.CompleteRequest();
                 }
@@ -97,6 +99,9 @@ namespace Projekt_1dv406.Pages
                 if (TryUpdateModel(action))
                 {
                     Service.UpdateAction(action);
+                    Page.SetTempData("Success", String.Format("Åtgärd tillhörande felanmälan med ärendenummer {0} är uppdaterad.", action.FelanmID));
+                    Response.RedirectToRoute("CaseEdit");
+                    Context.ApplicationInstance.CompleteRequest();
                 }
             }
             catch (Exception)
@@ -113,6 +118,9 @@ namespace Projekt_1dv406.Pages
                 try
                 {
                     Service.SaveAction(actionCase);
+                    Page.SetTempData("Success", String.Format("Åtgärd för felanmälan med ärendenummer {0} är sparad.", actionCase.FelanmID));
+                    Response.RedirectToRoute("CaseEdit");
+                    Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)
                 {
