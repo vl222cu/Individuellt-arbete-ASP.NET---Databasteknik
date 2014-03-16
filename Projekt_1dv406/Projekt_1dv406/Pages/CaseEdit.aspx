@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="CaseEdit.aspx.cs" Inherits="Projekt_1dv406.Pages.CaseEdit" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-        <h1>
-        Redigera felanmälan
+    <h1>Redigera felanmälan
     </h1>
 
     <%-- Länk tillbaks till felanmälningslistan --%>
@@ -28,7 +27,7 @@
         <EditItemTemplate>
             <div>
                 <asp:Label ID="DateLabel" runat="server"
-                    Text="Mottaget"></asp:Label>
+                    Text="Mottaget ärendenummer "></asp:Label><span><%# Item.FelanmID %></span>
             </div>
             <div>
                 <asp:TextBox ID="DateTextBox" runat="server"
@@ -68,10 +67,12 @@
                     DataKeyNames="FelanmID, ÅtgID, AvdID"
                     SelectMethod="ActionListView_GetData"
                     InsertMethod="ActionListView_InsertItem"
-                    UpdateMethod="ActionListView_UpdateItem">
+                    UpdateMethod="ActionListView_UpdateItem"
+                    InsertItemPosition="LastItem">
                     <LayoutTemplate>
                         <h3>Åtgärdinformation</h3>
                         <table>
+                            <th>Ärendenummer</th>
                             <th>Avdelning</th>
                             <th>Beräknad startdatum</th>
                             <th>Beräknad slutdatum</th>
@@ -81,6 +82,10 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox2" runat="server"
+                                   Text='<%# Item.FelanmID %>' Enabled="false"></asp:TextBox>
+                            </td>
                             <td>
                                 <asp:DropDownList ID="DepartmentDropDownListing" runat="server"
                                     ItemType="Projekt_1dv406.Model.Department"
@@ -108,6 +113,35 @@
                             </td>
                         </tr>
                     </ItemTemplate>
+                    <InsertItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox2" runat="server"
+                                   Text='<%# BindItem.FelanmID %>'></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="DepartmentDropDownListing" runat="server"
+                                    ItemType="Projekt_1dv406.Model.Department"
+                                    SelectMethod="DepartmentDropDownList_GetData"
+                                    DataTextField="Avdelning"
+                                    DataValueField="AvdID"
+                                    SelectedValue='<%# BindItem.AvdID %>'>
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="StartDateTextBox" runat="server"
+                                    TextMode="DateTimeLocal" Text='<%# BindItem.StartDatum %>'></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="EndTextTextBox" runat="server"
+                                    TextMode="DateTimeLocal" Text='<%# BindItem.SlutDatum %>'></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:LinkButton ID="LinkButton1" runat="server"
+                                    CommandName="Insert" Text="Spara" CssClass="linkbutton"></asp:LinkButton>
+                            </td>
+                        </tr>
+                    </InsertItemTemplate>
                     <EditItemTemplate>
                         <tr>
                             <td>

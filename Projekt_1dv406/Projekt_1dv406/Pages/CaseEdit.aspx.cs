@@ -28,8 +28,7 @@ namespace Projekt_1dv406.Pages
 
         }
 
-        // The id parameter should match the DataKeyNames value set on the control
-        // or be decorated with a value provider attribute, e.g. [QueryString]int id
+        // Hämtar vald felanmälan som finns lagrad i databasen
         public Projekt_1dv406.Model.Case EditErrorCaseFormView_GetItem([RouteData]int id)
         {
             try
@@ -70,12 +69,6 @@ namespace Projekt_1dv406.Pages
             }
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
         public IEnumerable<Projekt_1dv406.Model.Action> ActionListView_GetData()
         {
             var actionId = ((Case)(EditErrorCaseFormView.DataItem)).FelanmID;
@@ -87,7 +80,7 @@ namespace Projekt_1dv406.Pages
             return Service.GetDepartments();
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
+        // Uppdaterar ändringar på åtgärd i databasen
         public void ActionListView_UpdateItem(int ÅtgID)
         {
             try
@@ -109,6 +102,22 @@ namespace Projekt_1dv406.Pages
             catch (Exception)
             {
                 ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då åtgärdinformationen skulle uppdateras.");
+            }
+        }
+
+        // Skapar ny åtgärd i databasen
+        public void ActionListView_InsertItem(Projekt_1dv406.Model.Action actionCase)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Service.SaveAction(actionCase);
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då åtgärden skulle läggas till.");
+                }
             }
         }
     }

@@ -29,6 +29,10 @@ namespace Projekt_1dv406
             routes.MapPageRoute("CaseDelete",
                 "felanmälan/{id}/radera",
                 "~/Pages/CaseDelete.aspx");
+
+            routes.MapPageRoute("ActionCreate",
+               "felanmälan/{id}/Åtgärd",
+               "~/Pages/ActionCreate.aspx");
         }
     }
 }

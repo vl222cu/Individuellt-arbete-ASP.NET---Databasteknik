@@ -63,7 +63,7 @@
                 <asp:LinkButton ID="LinkCancelButton" runat="server"
                     Text="Avbryt" CommandName="Cancel"
                     CssClass="linkbutton" />
-            </div>
+            </div> 
         </InsertItemTemplate>
     </asp:FormView>
 </asp:Content>
