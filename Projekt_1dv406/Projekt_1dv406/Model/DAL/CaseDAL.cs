@@ -8,22 +8,26 @@ using System.Web.Configuration;
 
 namespace Projekt_1dv406.Model.DAL
 {
+    // Klass mot tabellen Felanmälan med CRUD-funktionalitet
     public class CaseDAL : DALBase
     {
         // Hämtar alla felanmälningar i databasen
         public static IEnumerable<Case> GetCases()
         {
+            // Skapar anslutningsobjekt
             using (var conn = CreateConnection())
             {
                 try
                 {
-                    var actions = new List<Case>(20);
+                    var actions = new List<Case>(100);
 
+                    // Skapar SQLCommand-objekt för att kunna exekvera den lagrade proceduren
                     var cmd = new SqlCommand("appSchema.GetCases", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     conn.Open();
 
+                    // Skapar SqlDataReader-objekt och returnerar en referens till objektet
                     using (var reader = cmd.ExecuteReader())
                     {
                         var errorCaseIdIndex = reader.GetOrdinal("FelanmID");
@@ -41,7 +45,9 @@ namespace Projekt_1dv406.Model.DAL
                         }
                     }
 
+                    // Trimmar listobjektet efter antalet element
                     actions.TrimExcess();
+
                     return actions;
                 }
                 catch (Exception)
@@ -54,10 +60,12 @@ namespace Projekt_1dv406.Model.DAL
         // Hämtar vald felanmälan i databasen
         public Case GetCase(int errorCaseId)
         {
+            // Skapar anslutningsobjekt
             using (var conn = CreateConnection())
             {
                 try
                 {
+                    // Skapar SQLCommand-objekt för att kunna exekvera den lagrade proceduren
                     var cmd = new SqlCommand("appSchema.GetCase", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -65,6 +73,7 @@ namespace Projekt_1dv406.Model.DAL
 
                     conn.Open();
 
+                    // Skapar SqlDataReader-objekt och returnerar en referens till objektet
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -96,10 +105,12 @@ namespace Projekt_1dv406.Model.DAL
         // Skapar ny felanmälan i databasen
         public void InsertCase(Case errorCase)
         {
+            // Skapar anslutningsobjekt
             using (var conn = CreateConnection())
             {
                 try
                 {
+                    // Skapar SQLCommand-objekt för att kunna exekvera den lagrade proceduren
                     var cmd = new SqlCommand("appSchema.InsertCase", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -110,6 +121,8 @@ namespace Projekt_1dv406.Model.DAL
 
                     conn.Open();
 
+                    // Metod för exekvering av lagrad procedur som inte returnerar 
+                    // några poster
                     cmd.ExecuteNonQuery();
 
                     errorCase.FelanmID = (int)cmd.Parameters["@FelanmID"].Value;
@@ -124,10 +137,12 @@ namespace Projekt_1dv406.Model.DAL
         // Uppdaterar en felanmälan i databasen
         public static void UpdateCase(Case errorCase)
         {
+            // Skapar anslutningsobjekt
             using (var conn = CreateConnection())
             {
                 try
                 {
+                    // Skapar SQLCommand-objekt för att kunna exekvera den lagrade proceduren
                     var cmd = new SqlCommand("appSchema.UpdateCase", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -138,6 +153,8 @@ namespace Projekt_1dv406.Model.DAL
 
                     conn.Open();
 
+                    // Metod för exekvering av lagrad procedur som inte returnerar 
+                    // några poster
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception)
@@ -150,10 +167,12 @@ namespace Projekt_1dv406.Model.DAL
         // Tar bort en felanmälan i databasen
         public static void DeleteCase(int felanmId)
         {
+            // Skapar anslutningsobjekt
             using (var conn = CreateConnection())
             {
                 try
                 {
+                    // Skapar SQLCommand-objekt för att kunna exekvera den lagrade proceduren
                     var cmd = new SqlCommand("appSchema.DeleteCase", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -161,6 +180,8 @@ namespace Projekt_1dv406.Model.DAL
 
                     conn.Open();
 
+                    // Metod för exekvering av lagrad procedur som inte returnerar 
+                    // några poster
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception)

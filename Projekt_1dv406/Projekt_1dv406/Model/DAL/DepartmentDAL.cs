@@ -13,12 +13,14 @@ namespace Projekt_1dv406.Model.DAL
         // Hämtar alla avdelningar i databasen från tabellen avdelning
         public static IEnumerable<Department> GetDepartments()
         {
+            // Skapar anslutningsobjekt
             using (var conn = CreateConnection())
             {
                 try
                 {
                     var departments = new List<Department>(10);
 
+                    // Skapar SQLCommand-objekt för att kunna exekvera den lagrade proceduren
                     var cmd = new SqlCommand("appSchema.GetDepartments", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -39,7 +41,9 @@ namespace Projekt_1dv406.Model.DAL
                         }
                     }
 
+                    // Trimmar listobjektet efter antalet element
                     departments.TrimExcess();
+
                     return departments;
                 }
                 catch (Exception)
@@ -52,10 +56,12 @@ namespace Projekt_1dv406.Model.DAL
         // Hämtar en avdelning i databasen från tabellen avdelning
         public Department GetDepartment(int depId)
         {
+            // Skapar anslutningsobjekt
             using (var conn = CreateConnection())
             {
                 try
                 {
+                    // Skapar SQLCommand-objekt för att kunna exekvera den lagrade proceduren
                     var cmd = new SqlCommand("appSchema.GetDepartment", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 

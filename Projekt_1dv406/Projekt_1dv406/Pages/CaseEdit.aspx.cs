@@ -71,12 +71,14 @@ namespace Projekt_1dv406.Pages
             }
         }
 
+        // Hämtar åtgärd från vald felanmälan
         public IEnumerable<Projekt_1dv406.Model.Action> ActionListView_GetData()
         {
             var actionId = ((Case)(EditErrorCaseFormView.DataItem)).FelanmID;
             return Service.GetActionByCaseId(actionId);
         }
 
+        // Hämtar alla avdelningar från databasen
         public IEnumerable<Department> DepartmentDropDownList_GetData()
         {
             return Service.GetDepartments();

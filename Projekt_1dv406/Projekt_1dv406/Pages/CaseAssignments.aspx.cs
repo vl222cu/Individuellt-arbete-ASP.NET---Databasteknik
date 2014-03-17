@@ -46,18 +46,14 @@ namespace Projekt_1dv406.Pages
             }
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
+        // Hämtar rätt åtgärd för vald felanmälan
         public IEnumerable<Projekt_1dv406.Model.Action> ActionListView_GetData()
         {
             var actionId = ((Case)(DetailsFormView.DataItem)).FelanmID;
             return Service.GetActionByCaseId(actionId);
         }
 
+        // Hämtar namnet på vald avdelning från databasen
         protected void ActionListView_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
             var action = (Projekt_1dv406.Model.Action)e.Item.DataItem;

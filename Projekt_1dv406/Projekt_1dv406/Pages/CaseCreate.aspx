@@ -28,11 +28,11 @@
                         Text="Inkommet"></asp:Label>
                 </div>
                 <div>
-                    <%-- Fält för datum --%>
-                    <asp:TextBox ID="DateTextBox" runat="server"
+                    <%-- Inputfält för datum vid registreringen av felanmälan --%>
+                    <asp:TextBox ID="CreateDateTextBox" runat="server"
                         TextMode="DateTimeLocal"
                         Text='<%# BindItem.Datum %>'
-                        CssClass="textbox"></asp:TextBox>
+                        CssClass="textbox"></asp:TextBox>           
                 </div>
 
                 <div class="caselabel">
@@ -40,7 +40,7 @@
                         Text="Ämne"></asp:Label>
                 </div>
                 <div>
-                    <%-- Fält för ämne på felanmälan --%>
+                    <%-- Inputfält för ämne på felanmälan --%>
                     <asp:TextBox ID="TopicTextBox" runat="server"
                         TextMode="SingleLine"
                         Text='<%# BindItem.Ämne %>' Width="300"
@@ -55,7 +55,7 @@
                         Text="Beskrivning (max 500 tecken)"></asp:Label>
                 </div>
                 <div>
-                    <%-- Fält för felanmälanbeskrivning --%>
+                    <%-- Inputfält för felanmälanbeskrivning --%>
                     <asp:TextBox ID="ErrorCaseTextBox" runat="server"
                         TextMode="MultiLine" Columns="80" Rows="10" MaxLength="500"
                         Text='<%# BindItem.Felanmälan %>' CssClass="textbox"></asp:TextBox>

@@ -37,6 +37,7 @@
                         Text="Mottaget ärendenummer "></asp:Label><span><%# Item.FelanmID %></span>
                 </div>
                 <div>
+                    <%-- Inputfält för datum vid ändring --%>
                     <asp:TextBox ID="DateTextBox" runat="server"
                         TextMode="DateTimeLocal"
                         Text='<%# BindItem.Datum %>'
@@ -47,6 +48,7 @@
                         Text="Ämne"></asp:Label>
                 </div>
                 <div>
+                    <%-- Inputfält för uppdatering av ämne på felanmälan --%>
                     <asp:TextBox ID="TopicTextBox" runat="server"
                         TextMode="SingleLine"
                         Text='<%# BindItem.Ämne %>' Width="300"
@@ -61,6 +63,7 @@
                         Text="Beskrivning (max 500 tecken)"></asp:Label>
                 </div>
                 <div>
+                    <%-- Inputfält för uppdatering av felanmälan --%>
                     <asp:TextBox ID="ErrorCaseTextBox" runat="server"
                         TextMode="MultiLine" Columns="70" Rows="10"
                         Text='<%# BindItem.Felanmälan %>'
@@ -94,11 +97,13 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
+                                    <%-- Visning av ärendenummer --%>
                                     <asp:TextBox ID="TextBox2" runat="server"
                                         Text='<%# Item.FelanmID %>' Enabled="false"
                                         CssClass="textbox"></asp:TextBox>
                                 </td>
                                 <td>
+                                    <%-- Visning av vald avdelning --%>
                                     <asp:DropDownList ID="DepartmentDropDownListing" runat="server"
                                         ItemType="Projekt_1dv406.Model.Department"
                                         SelectMethod="DepartmentDropDownList_GetData"
@@ -110,11 +115,13 @@
                                     </asp:DropDownList>
                                 </td>
                                 <td>
+                                    <%-- Visning av vald startdatum --%>
                                     <asp:TextBox ID="StartDateTextBox" runat="server"
                                         Text='<%# Item.StartDatum %>' Enabled="False"
                                         CssClass="textbox"></asp:TextBox>
                                 </td>
                                 <td>
+                                    <%-- Visning av slutdatum --%>
                                     <asp:TextBox ID="TextBox1" runat="server"
                                         Text='<%# Item.SlutDatum %>' Enabled="False"
                                         CssClass="textbox"></asp:TextBox>
@@ -133,11 +140,19 @@
                         <InsertItemTemplate>
                             <tr>
                                 <td>
+                                    <%-- Inputfält för ärendenummer --%>
                                     <asp:TextBox ID="InsertNoTextBox" runat="server"
                                         Text='<%# BindItem.FelanmID %>'
                                         CssClass="textbox"></asp:TextBox>
+                                    <%-- Validering --%>
+                                    <asp:CompareValidator ID="CompareValidator3" runat="server"
+                                        ControlToValidate="InsertNoTextBox" Type="Integer"
+                                        Operator="DataTypeCheck"
+                                        ErrorMessage="Ärendenumret måste vara ett heltal"
+                                        Display="None"></asp:CompareValidator>
                                 </td>
                                 <td>
+                                    <%-- Val av avdelningar --%>
                                     <asp:DropDownList ID="DepartmentDropDownListing" runat="server"
                                         ItemType="Projekt_1dv406.Model.Department"
                                         SelectMethod="DepartmentDropDownList_GetData"
@@ -148,14 +163,22 @@
                                     </asp:DropDownList>
                                 </td>
                                 <td>
+                                    <%-- Startdatuminput --%>
                                     <asp:TextBox ID="StartDateTextBox" runat="server"
                                         TextMode="DateTimeLocal" Text='<%# BindItem.StartDatum %>'
                                         CssClass="textbox"></asp:TextBox>
                                 </td>
                                 <td>
+                                    <%-- Slutdatuminput --%>
                                     <asp:TextBox ID="EndDateTextBox" runat="server"
                                         TextMode="DateTimeLocal" Text='<%# BindItem.SlutDatum %>'
                                         CssClass="textbox"></asp:TextBox>
+                                    <%-- Validering --%>
+                                    <asp:CompareValidator ID="CompareValidator1" runat="server"
+                                        ErrorMessage="Slutdatum måste vara längre fram än Startdatum"
+                                        ControlToValidate="EndDateTextBox" Type="Date"
+                                        Operator="GreaterThanEqual" ControlToCompare="StartDateTextBox"
+                                        Display="None"></asp:CompareValidator>   
                                 </td>
                                 <td>
                                     <asp:LinkButton ID="LinkButton1" runat="server"
@@ -168,6 +191,7 @@
                             <tr>
                                 <td></td>
                                 <td>
+                                    <%-- Val av avdelningar vid uppdatering --%>
                                     <asp:DropDownList ID="DepartmentDropDownListing" runat="server"
                                         ItemType="Projekt_1dv406.Model.Department"
                                         SelectMethod="DepartmentDropDownList_GetData"
@@ -178,14 +202,22 @@
                                     </asp:DropDownList>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="StartDateTextBox" runat="server"
+                                    <%-- Startdatuminput --%>
+                                    <asp:TextBox ID="StartDateTextBox2" runat="server"
                                         TextMode="DateTimeLocal" Text='<%# BindItem.StartDatum %>'
                                         CssClass="textbox"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TextBox1" runat="server"
+                                    <%-- Slutdatuminput --%>
+                                    <asp:TextBox ID="EndDateTextBox2" runat="server"
                                         TextMode="DateTimeLocal" Text='<%# BindItem.SlutDatum %>'
                                         CssClass="textbox"></asp:TextBox>
+                                    <%-- Validering --%>
+                                    <asp:CompareValidator ID="CompareValidator2" runat="server"
+                                        ErrorMessage="Slutdatum måste vara längre fram än Startdatum"
+                                        ControlToValidate="EndDateTextBox2" Type="Date"
+                                        Operator="GreaterThanEqual" ControlToCompare="StartDateTextBox2"
+                                        Display="None"></asp:CompareValidator>   
                                 </td>
                                 <td>
                                     <asp:LinkButton ID="LinkButton1" runat="server"
@@ -218,5 +250,4 @@
         </asp:FormView>
     </div>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ScriptContentPlaceHolder" runat="server">
-</asp:Content>
+

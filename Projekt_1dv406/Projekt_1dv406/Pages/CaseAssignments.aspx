@@ -4,6 +4,7 @@
     <h1>
         Detaljer Felanmälan
     </h1>
+    <%-- Länk tillbaka till Felanmälningslistan --%>
     <div class="links">
         <asp:HyperLink runat="server" Text="Felanmälningslista" NavigateUrl='<%$ RouteUrl:routename=CaseListing %>' />
     </div>
@@ -14,6 +15,7 @@
             <asp:Label ID="StatusLabel" runat="server" Text="" Visible="false" CssClass="statusmsg"></asp:Label>
         </p>
         <p>
+            <%-- Valideringsfelmeddelanden --%>
             <asp:ValidationSummary ID="ValidationSummary1" runat="server"
                 HeaderText="Fel inträffade! Åtgärda felen och försök igen."
                 CssClass="validate" />
