@@ -10,6 +10,10 @@ namespace Projekt_1dv406
     {
         public static void LinkRoutes(RouteCollection routes)
         {
+            routes.MapPageRoute("Default",
+                "",
+                "~/Pages/CaseCreate.aspx");
+
             routes.MapPageRoute("CaseCreate",
                 "felanmälan/ny",
                 "~/Pages/CaseCreate.aspx");
