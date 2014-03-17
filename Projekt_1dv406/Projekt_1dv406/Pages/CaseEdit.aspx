@@ -173,12 +173,6 @@
                                     <asp:TextBox ID="EndDateTextBox" runat="server"
                                         TextMode="DateTimeLocal" Text='<%# BindItem.SlutDatum %>'
                                         CssClass="textbox"></asp:TextBox>
-                                    <%-- Validering --%>
-                                    <asp:CompareValidator ID="CompareValidator1" runat="server"
-                                        ErrorMessage="Slutdatum måste vara längre fram än Startdatum"
-                                        ControlToValidate="EndDateTextBox" Type="Date"
-                                        Operator="GreaterThanEqual" ControlToCompare="StartDateTextBox"
-                                        Display="None"></asp:CompareValidator>   
                                 </td>
                                 <td>
                                     <asp:LinkButton ID="LinkButton1" runat="server"
@@ -212,12 +206,6 @@
                                     <asp:TextBox ID="EndDateTextBox2" runat="server"
                                         TextMode="DateTimeLocal" Text='<%# BindItem.SlutDatum %>'
                                         CssClass="textbox"></asp:TextBox>
-                                    <%-- Validering --%>
-                                    <asp:CompareValidator ID="CompareValidator2" runat="server"
-                                        ErrorMessage="Slutdatum måste vara längre fram än Startdatum"
-                                        ControlToValidate="EndDateTextBox2" Type="Date"
-                                        Operator="GreaterThanEqual" ControlToCompare="StartDateTextBox2"
-                                        Display="None"></asp:CompareValidator>   
                                 </td>
                                 <td>
                                     <asp:LinkButton ID="LinkButton1" runat="server"

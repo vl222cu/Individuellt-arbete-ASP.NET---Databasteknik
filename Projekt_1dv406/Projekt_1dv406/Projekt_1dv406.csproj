@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="Pages\Shared\Error.html" />
     <Content Include="Pages\Shared\Site.Master" />
+    <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
