@@ -102,7 +102,7 @@ namespace Projekt_1dv406.Pages
                 {
                     Service.UpdateAction(action);
                     Page.SetTempData("Success", String.Format("Åtgärd tillhörande felanmälan med ärendenummer {0} är uppdaterad.", action.FelanmID));
-                    Response.RedirectToRoute("CaseEdit");
+                    Response.RedirectToRoute("CaseListing");
                     Context.ApplicationInstance.CompleteRequest();
                 }
             }
@@ -121,7 +121,7 @@ namespace Projekt_1dv406.Pages
                 {
                     Service.SaveAction(actionCase);
                     Page.SetTempData("Success", String.Format("Åtgärd för felanmälan med ärendenummer {0} är sparad.", actionCase.FelanmID));
-                    Response.RedirectToRoute("CaseEdit");
+                    Response.RedirectToRoute("CaseListing");
                     Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)
