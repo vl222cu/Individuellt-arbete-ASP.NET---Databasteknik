@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace Projekt_1dv406
 {
-    public static class RouteConfig
+    public class RouteConfig
     {
         public static void LinkRoutes(RouteCollection routes)
         {
