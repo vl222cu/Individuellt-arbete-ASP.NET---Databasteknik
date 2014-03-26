@@ -39,6 +39,11 @@ namespace Projekt_1dv406.Model
             }
         }
 
+        public void DeleteAction(int actionId)
+        {
+            ActionDAL.DeleteAction(actionId);
+        }
+
         // Hämtar vald åtgärd från databasen
         public Action GetAction(int actionId)
         {

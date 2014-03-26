@@ -81,6 +81,7 @@
                         SelectMethod="ActionListView_GetData"
                         InsertMethod="ActionListView_InsertItem"
                         UpdateMethod="ActionListView_UpdateItem"
+                        DeleteMethod="ActionListView_DeleteItem"
                         InsertItemPosition="LastItem">
                         <LayoutTemplate>
                             <h3>Åtgärdinformation</h3>
@@ -89,6 +90,7 @@
                                 <th>Avdelning</th>
                                 <th>Beräknad startdatum</th>
                                 <th>Beräknad slutdatum</th>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                                 <asp:PlaceHolder ID="itemPlaceHolder" runat="server"></asp:PlaceHolder>
@@ -129,6 +131,12 @@
                                 <td>
                                     <asp:LinkButton ID="LinkButton1" runat="server"
                                         CommandName="Edit" Text="Redigera" CssClass="linkbutton"></asp:LinkButton>
+                                </td>
+                                <td>
+                                    <asp:LinkButton ID="LinkButton3" runat="server"
+                                        CommandName="Delete" Text="Radera"
+                                        CausesValidation="false" CssClass="linkbutton"
+                                        OnClientClick='<%# String.Format("return confirm(\"Vill du verkligen radera åtgärden för felanmälan med ärendenummer {0}?\")", Item.FelanmID) %>'></asp:LinkButton>
                                 </td>
                                 <td>
                                     <asp:LinkButton ID="LinkButton2" runat="server"

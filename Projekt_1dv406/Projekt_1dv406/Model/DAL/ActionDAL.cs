@@ -35,7 +35,7 @@ namespace Projekt_1dv406.Model.DAL
                         var depIndex = reader.GetOrdinal("AvdID");
                         var startDateIndex = reader.GetOrdinal("StartDatum");
                         var endDateIndex = reader.GetOrdinal("SlutDatum");
-                           
+
                         while (reader.Read())
                         {
                             actions.Add(new Action
@@ -106,7 +106,7 @@ namespace Projekt_1dv406.Model.DAL
                 {
                     throw new ApplicationException("Ett fel uppstod vid kontakt med databasen.");
                 }
-            }  
+            }
         }
 
         // Hämtar alla åtgärder i databasen
@@ -130,14 +130,14 @@ namespace Projekt_1dv406.Model.DAL
                     // Skapar SqlDataReader-objekt och returnerar en referens till objektet
                     using (var reader = cmd.ExecuteReader())
                     {
-                       var errorCaseIndex = reader.GetOrdinal("FelanmID");
-                       var actionIndex = reader.GetOrdinal("ÅtgID");
-                       var depIndex = reader.GetOrdinal("AvdID");
-                       var startDateIndex = reader.GetOrdinal("StartDatum");
-                       var endDateIndex = reader.GetOrdinal("SlutDatum");
+                        var errorCaseIndex = reader.GetOrdinal("FelanmID");
+                        var actionIndex = reader.GetOrdinal("ÅtgID");
+                        var depIndex = reader.GetOrdinal("AvdID");
+                        var startDateIndex = reader.GetOrdinal("StartDatum");
+                        var endDateIndex = reader.GetOrdinal("SlutDatum");
 
-                       while (reader.Read())
-                       {
+                        while (reader.Read())
+                        {
                             actions.Add(new Action
                             {
                                 FelanmID = reader.GetInt32(errorCaseIndex),
@@ -219,6 +219,33 @@ namespace Projekt_1dv406.Model.DAL
                 catch (Exception)
                 {
                     throw new ApplicationException("Ett fel uppstod vid uppdateringen.");
+                }
+            }
+        }
+
+        // Tar bort en åtgärd i databasen
+        public static void DeleteAction(int ÅtgId)
+        {
+            // Skapar anslutningsobjekt
+            using (var conn = CreateConnection())
+            {
+                try
+                {
+                    // Skapar SQLCommand-objekt för att kunna exekvera den lagrade proceduren
+                    var cmd = new SqlCommand("appSchema.DeleteAction", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@ÅtgID", SqlDbType.Int, 4).Value = ÅtgId;
+
+                    conn.Open();
+
+                    // Metod för exekvering av lagrad procedur som inte returnerar 
+                    // några poster
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw new ApplicationException("Ett fel uppstod vid borttag av åtgärd.");
                 }
             }
         }

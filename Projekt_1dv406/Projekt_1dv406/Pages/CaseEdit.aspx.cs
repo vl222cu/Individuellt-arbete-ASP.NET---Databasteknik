@@ -130,5 +130,22 @@ namespace Projekt_1dv406.Pages
                 }
             }
         }
+
+        // Raderar åtgärd i databasen
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void ActionListView_DeleteItem(int åtgId)
+        {
+            try
+            {
+                Service.DeleteAction(åtgId);
+                Page.SetTempData("Success", String.Format("Åtgärden är raderad."));
+                Response.RedirectToRoute("CaseListing");
+                Context.ApplicationInstance.CompleteRequest();
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då åtgärden skulle tas bort.");
+            }
+        }
     }
 }
