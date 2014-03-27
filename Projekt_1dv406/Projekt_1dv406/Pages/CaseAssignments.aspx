@@ -61,7 +61,6 @@
                         <LayoutTemplate>
                             <h3>Åtgärdinformation</h3>
                             <table>
-                                <th>Ärendenummer</th>
                                 <th>Avdelning</th>
                                 <th>Beräknad startdatum</th>
                                 <th>Beräknad slutdatum</th>
@@ -70,9 +69,6 @@
                         </LayoutTemplate>
                         <ItemTemplate>
                             <tr>
-                                <td>
-                                    <asp:Label ID="Label3" runat="server" Text='<%#: Item.FelanmID %>'></asp:Label>
-                                </td>
                                 <td>
                                     <asp:Literal ID="DepartmentLiteral" runat="server"></asp:Literal>
                                 </td>

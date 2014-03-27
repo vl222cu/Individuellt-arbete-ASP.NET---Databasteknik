@@ -34,12 +34,13 @@
             <EditItemTemplate>
                 <div class="caselabel">
                     <asp:Label ID="DateLabel" runat="server"
-                        Text="Mottaget ärendenummer "></asp:Label><span><%# Item.FelanmID %></span>
+                        Text="Mottaget ärendenummer "></asp:Label>
+                    <asp:Literal ID="FelanmIdLiteral" runat="server" Text="<%# Item.FelanmID %>"></asp:Literal>
                 </div>
                 <div>
                     <%-- Inputfält för datum vid ändring --%>
                     <asp:TextBox ID="DateTextBox" runat="server"
-                        TextMode="DateTimeLocal"
+                        TextMode="DateTime"
                         Text='<%# BindItem.Datum %>'
                         CssClass="textbox"></asp:TextBox>
                 </div>
@@ -86,7 +87,6 @@
                         <LayoutTemplate>
                             <h3>Åtgärdinformation</h3>
                             <table>
-                                <th>Ärendenummer</th>
                                 <th>Avdelning</th>
                                 <th>Beräknad startdatum</th>
                                 <th>Beräknad slutdatum</th>
@@ -98,12 +98,6 @@
                         </LayoutTemplate>
                         <ItemTemplate>
                             <tr>
-                                <td>
-                                    <%-- Visning av ärendenummer --%>
-                                    <asp:TextBox ID="TextBox2" runat="server"
-                                        Text='<%# Item.FelanmID %>' Enabled="false"
-                                        CssClass="textbox"></asp:TextBox>
-                                </td>
                                 <td>
                                     <%-- Visning av vald avdelning --%>
                                     <asp:DropDownList ID="DepartmentDropDownListing" runat="server"
@@ -133,32 +127,15 @@
                                         CommandName="Edit" Text="Redigera" CssClass="linkbutton"></asp:LinkButton>
                                 </td>
                                 <td>
-                                    <asp:LinkButton ID="LinkButton3" runat="server"
+                                    <asp:LinkButton ID="LinkButton2" runat="server"
                                         CommandName="Delete" Text="Radera"
                                         CausesValidation="false" CssClass="linkbutton"
                                         OnClientClick='<%# String.Format("return confirm(\"Vill du verkligen radera åtgärden för felanmälan med ärendenummer {0}?\")", Item.FelanmID) %>'></asp:LinkButton>
-                                </td>
-                                <td>
-                                    <asp:LinkButton ID="LinkButton2" runat="server"
-                                        CommandName="Cancel" Text="Avbryt"
-                                        CausesValidation="false" CssClass="linkbutton"></asp:LinkButton>
                                 </td>
                             </tr>
                         </ItemTemplate>
                         <InsertItemTemplate>
                             <tr>
-                                <td>
-                                    <%-- Inputfält för ärendenummer --%>
-                                    <asp:TextBox ID="InsertNoTextBox" runat="server"
-                                        Text='<%# BindItem.FelanmID %>'
-                                        CssClass="textbox"></asp:TextBox>
-                                    <%-- Validering --%>
-                                    <asp:CompareValidator ID="CompareValidator3" runat="server"
-                                        ControlToValidate="InsertNoTextBox" Type="Integer"
-                                        Operator="DataTypeCheck"
-                                        ErrorMessage="Ärendenumret måste vara ett heltal"
-                                        Display="None"></asp:CompareValidator>
-                                </td>
                                 <td>
                                     <%-- Val av avdelningar --%>
                                     <asp:DropDownList ID="DepartmentDropDownListing" runat="server"
@@ -191,7 +168,6 @@
                         </InsertItemTemplate>
                         <EditItemTemplate>
                             <tr>
-                                <td></td>
                                 <td>
                                     <%-- Val av avdelningar vid uppdatering --%>
                                     <asp:DropDownList ID="DepartmentDropDownListing" runat="server"
@@ -206,13 +182,13 @@
                                 <td>
                                     <%-- Startdatuminput --%>
                                     <asp:TextBox ID="StartDateTextBox2" runat="server"
-                                        TextMode="DateTimeLocal" Text='<%# BindItem.StartDatum %>'
+                                        TextMode="DateTime" Text='<%# BindItem.StartDatum %>'
                                         CssClass="textbox"></asp:TextBox>
                                 </td>
                                 <td>
                                     <%-- Slutdatuminput --%>
                                     <asp:TextBox ID="EndDateTextBox2" runat="server"
-                                        TextMode="DateTimeLocal" Text='<%# BindItem.SlutDatum %>'
+                                        TextMode="DateTime" Text='<%# BindItem.SlutDatum %>'
                                         CssClass="textbox"></asp:TextBox>
                                 </td>
                                 <td>

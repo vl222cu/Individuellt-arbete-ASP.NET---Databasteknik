@@ -13,8 +13,7 @@
     <form id="myForm" runat="server">
         <div id="maincontainer">
             <header>
-                <h1>
-                    Ärendehantering
+                <h1>Ärendehantering
                 </h1>
             </header>
             <div id="maincontent">
@@ -23,7 +22,7 @@
             <footer>Project Owner Vivi Lam</footer>
         </div>
     </form>
-         <%-- Tonar ut statusmeddelande --%>
+    <%-- Tonar ut statusmeddelande --%>
     <script>
         $(document).ready(function () {
             var $statusText = $(".statusmsg");

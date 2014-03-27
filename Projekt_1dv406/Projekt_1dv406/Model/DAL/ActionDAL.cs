@@ -178,11 +178,15 @@ namespace Projekt_1dv406.Model.DAL
                     cmd.Parameters.Add("@StartDatum", SqlDbType.DateTime, 8).Value = actionCase.StartDatum;
                     cmd.Parameters.Add("@SlutDatum", SqlDbType.DateTime, 8).Value = actionCase.SlutDatum;
 
+                    cmd.Parameters.Add("@ÅtgID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+
                     conn.Open();
 
                     // Metod för exekvering av lagrad procedur som inte returnerar 
                     // några poster
                     cmd.ExecuteNonQuery();
+
+                    actionCase.FelanmID = (int)cmd.Parameters["@ÅtgID"].Value;
                 }
                 catch (Exception)
                 {

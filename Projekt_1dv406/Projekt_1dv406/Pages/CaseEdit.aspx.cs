@@ -1,6 +1,7 @@
 ﻿using Projekt_1dv406.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
@@ -25,8 +26,7 @@ namespace Projekt_1dv406.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            StatusLabel.Text = Page.GetTempData("Success") as String;
-            StatusLabel.Visible = !String.IsNullOrWhiteSpace(StatusLabel.Text);
+
         }
 
         // Hämtar vald felanmälan som finns lagrad i databasen
@@ -100,7 +100,7 @@ namespace Projekt_1dv406.Pages
 
                 if (TryUpdateModel(action))
                 {
-                    Service.UpdateAction(action);
+                    Service.SaveAction(action);
                     Page.SetTempData("Success", String.Format("Åtgärd tillhörande felanmälan med ärendenummer {0} är uppdaterad.", action.FelanmID));
                     Response.RedirectToRoute("CaseListing");
                     Context.ApplicationInstance.CompleteRequest();
@@ -113,14 +113,14 @@ namespace Projekt_1dv406.Pages
         }
 
         // Skapar ny åtgärd i databasen
-        public void ActionListView_InsertItem(Projekt_1dv406.Model.Action actionCase)
+        public void ActionListView_InsertItem(Projekt_1dv406.Model.Action action)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Service.SaveAction(actionCase);
-                    Page.SetTempData("Success", String.Format("Åtgärd för felanmälan med ärendenummer {0} är sparad.", actionCase.FelanmID));
+                    Service.SaveAction(action);
+                    Page.SetTempData("Success", String.Format("Åtgärd för felanmälan med ärendenummer {0} är sparad.", action.FelanmID));
                     Response.RedirectToRoute("CaseListing");
                     Context.ApplicationInstance.CompleteRequest();
                 }

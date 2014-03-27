@@ -62,23 +62,8 @@ namespace Projekt_1dv406.Model
             return ActionDAL.GetActionList();
         }
 
-        // Lägger till ny åtgärd i databasen
-        public void SaveAction(Action actionCase)
-        {
-            // Validering
-            ICollection<ValidationResult> validationResults;
-            if (!actionCase.Validate(out validationResults))
-            {
-                var ex = new ValidationException("Objektet klarade inte valideringen.");
-                ex.Data.Add("ValidationResults", validationResults);
-                throw ex;
-            }
-
-            ActionDAL.InsertAction(actionCase);
-        }
-
         // Uppdaterar ändringar för vald åtgärd i databasen
-        public void UpdateAction(Action action)
+        public void SaveAction(Action action)
         {
             // Validering
             ICollection<ValidationResult> validationResults;
@@ -89,7 +74,14 @@ namespace Projekt_1dv406.Model
                 throw ex;
             }
 
-            ActionDAL.UpdateAction(action);
+            if (action.ÅtgID == 0)
+            {
+                ActionDAL.InsertAction(action);
+            }
+            else
+            {
+                ActionDAL.UpdateAction(action);
+            }
         }
 
         public void DeleteCase(int caseId)
