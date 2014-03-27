@@ -113,7 +113,7 @@ namespace Projekt_1dv406.Pages
         }
 
         // Skapar ny åtgärd i databasen
-        public void ActionListView_InsertItem(Projekt_1dv406.Model.Action action)
+        public void ActionListView_InsertItem(Projekt_1dv406.Model.Action action, [RouteData] int id)
         {
             if (ModelState.IsValid)
             {
