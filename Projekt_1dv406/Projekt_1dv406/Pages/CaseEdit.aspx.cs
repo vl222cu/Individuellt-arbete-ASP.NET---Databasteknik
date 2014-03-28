@@ -24,9 +24,11 @@ namespace Projekt_1dv406.Pages
             }
         }
 
+        public int FelanmID { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+   
         }
 
         // Hämtar vald felanmälan som finns lagrad i databasen
@@ -119,8 +121,9 @@ namespace Projekt_1dv406.Pages
             {
                 try
                 {
+                    action.FelanmID = id;
                     Service.SaveAction(action);
-                    Page.SetTempData("Success", String.Format("Åtgärd för felanmälan med ärendenummer {0} är sparad.", action.FelanmID));
+                    Page.SetTempData("Success", String.Format("Åtgärd för felanmälan med ärendenummer {0} är sparad.", id));
                     Response.RedirectToRoute("CaseListing");
                     Context.ApplicationInstance.CompleteRequest();
                 }

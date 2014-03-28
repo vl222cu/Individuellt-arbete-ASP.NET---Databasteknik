@@ -78,8 +78,8 @@
                     <%-- Listview som presenterar felanmälans åtgärd --%>
                     <asp:ListView ID="ActionListView" runat="server"
                         ItemType="Projekt_1dv406.Model.Action"
-                        FelanmID="<%$ RouteValue:id %>"
                         DataKeyNames="FelanmID, ÅtgID, AvdID"
+                        FelanmID="<%$ RouteValue:id %>"
                         SelectMethod="ActionListView_GetData"
                         InsertMethod="ActionListView_InsertItem"
                         UpdateMethod="ActionListView_UpdateItem"
