@@ -24,8 +24,6 @@ namespace Projekt_1dv406.Pages
             }
         }
 
-        public int FelanmID { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
    
